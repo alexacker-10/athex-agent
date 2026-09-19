@@ -191,8 +191,10 @@ def build_dashboard(repo: ConfigRepo, env, today: date) -> dict[str, Any]:
                 random_returns[b.id].append(m["return"])
         if not entry["books"]:
             continue
-        # decisions and views
-        for p in sorted((paths.root / "decisions").glob("????-??-??.json"))[-90:]:
+        # decisions and views (light instances keep NAV only)
+        for p in (
+            [] if inst.light else sorted((paths.root / "decisions").glob("????-??-??.json"))[-90:]
+        ):
             rec = json.loads(p.read_text())
             prop = rec.get("proposal", {})
             detail["decisions"].append(
@@ -232,6 +234,8 @@ def build_dashboard(repo: ConfigRepo, env, today: date) -> dict[str, Any]:
         if paths.journal.exists():
             detail["journal"] = json.loads(paths.journal.read_text())
         arms_out.append(entry)
+        if inst.light:
+            continue
         (docs / "data" / "arms" / f"{inst.key.replace('@', '__')}.json").write_text(
             json.dumps(detail, indent=1, ensure_ascii=False, default=str) + "\n", encoding="utf-8"
         )

@@ -144,7 +144,15 @@ def universe_for(repo: ConfigRepo, env: Env, d: date) -> list[str]:
 
 
 def _runner(inst: ArmInstance, env: Env, decider=None) -> ArmRunner:
-    return ArmRunner(inst.resolved, env.prices, env.actions, env.state_root, inst.instance, decider)
+    return ArmRunner(
+        inst.resolved,
+        env.prices,
+        env.actions,
+        env.state_root,
+        inst.instance,
+        decider,
+        persist_decisions=not inst.light,
+    )
 
 
 def _committed(env: Env, runner: ArmRunner, book) -> dict[str, datetime]:
@@ -246,7 +254,7 @@ def job_decide(repo: ConfigRepo, env: Env, today: date) -> dict[str, Any]:
         if inst.start_on > today:
             continue
         paths = inst.paths(env.state_root)
-        if paths.decision(today).exists():
+        if paths.decision(today).exists() or (inst.light and _nav_has(paths, today)):
             per_arm[inst.key] = {"skipped": "already decided"}
             continue
         try:
@@ -261,6 +269,15 @@ def job_decide(repo: ConfigRepo, env: Env, today: date) -> dict[str, Any]:
     summary["arms"] = per_arm
     summary["llm_spent_month_eur"] = llm.spent_eur(env.clock())
     return summary
+
+
+def _nav_has(paths, today: date) -> bool:
+    p = (
+        paths.nav(next(iter(paths.root.glob("books/*"))).name)
+        if (paths.root / "books").exists()
+        else None
+    )
+    return bool(p and p.exists() and today.isoformat() in p.read_text())
 
 
 def _decide_one(

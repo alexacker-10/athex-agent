@@ -70,6 +70,7 @@ def test_orchestrator_instances_and_shedding(repo):
         "equal_weight",
     } <= keys
     assert sum(1 for i in inst if i.arm_id == "random") == 200
+    assert sum(1 for i in inst if i.arm_id == "random" and not i.light) == 5
     assert not any(i.cohort for i in inst)  # no cohort before the next month starts
     later = active_instances(repo, first, date(2026, 12, 3))
     cohorts = sorted({i.cohort for i in later if i.cohort})

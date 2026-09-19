@@ -12,6 +12,7 @@ from athex_agent.config.models import ResolvedArm
 from athex_agent.data import calendar as cal
 
 COHORT_RANDOM_SEEDS = 50
+FULL_RECORD_SEEDS = 5  # random seeds beyond this keep NAV only (no per-day decision/view files)
 ESTIMATE_EUR = {"claude-opus-5": 0.20, "claude-sonnet-5": 0.08, "claude-haiku-4-5": 0.03}
 SHED_PRIORITY = ["cohort", "D", "C", "B", "R2", "R1", "A"]  # first entries are shed first
 
@@ -23,6 +24,7 @@ class ArmInstance:
     cohort: str | None  # "YYYY-MM" for staggered copies, None for the base instance
     start_on: date
     resolved: ResolvedArm
+    light: bool = False  # NAV series only; no per-day decision, view or prompt files
 
     @property
     def key(self) -> str:
@@ -60,7 +62,10 @@ def active_instances(repo: ConfigRepo, first_live: date | None, today: date) -> 
         if arm.kind == "rule" and arm.rule and arm.rule.kind == "random":
             n = int(arm.rule.params.get("n_seeds", 1))
             out.extend(
-                ArmInstance(arm_id, f"seed-{k:03d}", None, start_on, resolved) for k in range(n)
+                ArmInstance(
+                    arm_id, f"seed-{k:03d}", None, start_on, resolved, k >= FULL_RECORD_SEEDS
+                )
+                for k in range(n)
             )
         else:
             out.append(ArmInstance(arm_id, None, None, start_on, resolved))
@@ -73,7 +78,14 @@ def active_instances(repo: ConfigRepo, first_live: date | None, today: date) -> 
                     continue
                 if arm.kind == "rule" and arm.rule and arm.rule.kind == "random":
                     out.extend(
-                        ArmInstance(arm_id, f"cohort-{month}-seed-{k:03d}", month, start, resolved)
+                        ArmInstance(
+                            arm_id,
+                            f"cohort-{month}-seed-{k:03d}",
+                            month,
+                            start,
+                            resolved,
+                            k >= FULL_RECORD_SEEDS,
+                        )
                         for k in range(COHORT_RANDOM_SEEDS)
                     )
                 else:

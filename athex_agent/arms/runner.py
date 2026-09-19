@@ -88,7 +88,9 @@ class ArmRunner:
         state_root: Path,
         instance: str | None = None,
         decider: Decider | None = None,
+        persist_decisions: bool = True,
     ) -> None:
+        self.persist_decisions = persist_decisions
         self.resolved = resolved
         self.arm = resolved.arm
         self.store = store
@@ -276,6 +278,8 @@ class ArmRunner:
                 "blocked": res.blocked,
             }
         self.save_books(books)
+        if not self.persist_decisions:
+            return record
         if getattr(self.decider, "last_prompt", None) is not None:
             self._write_json(
                 self.paths.prompt(decision_date),
