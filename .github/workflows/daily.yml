@@ -1,0 +1,81 @@
+name: Daily trading run
+
+on:
+  schedule:
+    - cron: "0 9 * * 1-5"    # fill at today's opening auction (11:00/12:00 Athens)
+    - cron: "30 18 * * 1-5"  # decide after the close (20:30/21:30 Athens)
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Job to run"
+        type: choice
+        options: [decide, fill, bootstrap, dashboard]
+        default: decide
+      as_of:
+        description: "Trading date YYYY-MM-DD (default: last completed session)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+# Never two trading runs at once; a late run waits for the earlier one.
+concurrency:
+  group: trading
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+      REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+      LLM_MONTHLY_CAP_EUR: ${{ vars.LLM_MONTHLY_CAP_EUR || '25' }}
+      TRADING_ENABLED: ${{ vars.TRADING_ENABLED || 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Pick the job
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "job=${{ github.event.inputs.job }}" >> "$GITHUB_OUTPUT"
+            echo "as_of=${{ github.event.inputs.as_of }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 9 * * 1-5" ]; then
+            echo "job=fill" >> "$GITHUB_OUTPUT"
+          else
+            echo "job=decide" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Kill switch
+        if: env.TRADING_ENABLED != 'true'
+        run: echo "TRADING_ENABLED is not 'true'; skipping" && exit 0
+      - name: Run job
+        if: env.TRADING_ENABLED == 'true'
+        run: |
+          ARGS=""
+          if [ -n "${{ steps.pick.outputs.as_of }}" ]; then ARGS="--as-of ${{ steps.pick.outputs.as_of }}"; fi
+          python -m athex_agent.runs ${{ steps.pick.outputs.job }} $ARGS -v
+      - name: Commit state
+        if: always() && env.TRADING_ENABLED == 'true'
+        run: |
+          git config user.name "athex-agent[bot]"
+          git config user.email "athex-agent[bot]@users.noreply.github.com"
+          git add -A data state docs
+          if git diff --cached --quiet; then echo "nothing to commit"; exit 0; fi
+          git commit -q -m "state: ${{ steps.pick.outputs.job }} $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          for i in 1 2 3 4; do
+            if git push; then exit 0; fi
+            git pull --rebase --autostash && sleep $((i * 5))
+          done
+          echo "push failed" && exit 1

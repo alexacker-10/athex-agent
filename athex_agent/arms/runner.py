@@ -95,7 +95,9 @@ class ArmRunner:
         self.actions = actions
         self.instance = instance
         self.paths = ArmPaths(state_root, self.arm.id, instance)
-        self.decider = decider or make_decider(self.arm)
+        # Rule arms build their own decider; LLM arms get one injected by the orchestrator.
+        # The fill job needs no decider at all.
+        self.decider = decider or (make_decider(self.arm) if self.arm.kind == "rule" else None)
         self.rules = RulesLayer()
 
     # ---- lifecycle
@@ -221,6 +223,8 @@ class ArmRunner:
         extra: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         assert_frozen(self.paths.root, self.resolved)
+        if self.decider is None:
+            raise RuntimeError(f"arm {self.arm.id}: no decider injected for an LLM arm")
         books = self.load_books()
         prices = self.store.as_of(decision_date)
         primary = next((books[b.id] for b in self.resolved.books if b.primary), None) or next(
@@ -293,6 +297,44 @@ class ArmRunner:
                 "instance": self.instance,
                 "decision_date": decision_date.isoformat(),
                 "views": [v.model_dump(mode="json") for v in proposal.views],
+            },
+        )
+        return record
+
+    def decide_hold(
+        self, decision_date: date, decision_ts: datetime, universe_members: list[str], reason: str
+    ) -> dict[str, Any]:
+        """Record a no-action decision (e.g. budget shed) without calling the decider."""
+        assert_frozen(self.paths.root, self.resolved)
+        books = self.load_books()
+        record: dict[str, Any] = {
+            "arm_id": self.arm.id,
+            "instance": self.instance,
+            "decision_date": decision_date.isoformat(),
+            "decision_ts": decision_ts.isoformat(),
+            "buildup": False,
+            "universe_size": len(universe_members),
+            "proposal": {
+                "arm_id": self.arm.id,
+                "decision_date": decision_date.isoformat(),
+                "views": [],
+                "actions": [],
+                "meta": {"hold_reason": reason},
+            },
+            "books": {},
+        }
+        prices = self.store.as_of(decision_date)
+        for book_id, book in books.items():
+            closes = {t: prices.close(t) for t in book.positions}
+            record["books"][book_id] = {"nav": book.nav(closes), "orders": [], "blocked": []}
+        self._write_json(self.paths.decision(decision_date), record)
+        self._write_json(
+            self.paths.views(decision_date),
+            {
+                "arm_id": self.arm.id,
+                "instance": self.instance,
+                "decision_date": decision_date.isoformat(),
+                "views": [],
             },
         )
         return record

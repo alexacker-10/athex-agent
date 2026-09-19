@@ -40,13 +40,20 @@ instrument; the books test whether views survive execution.
 - `athex_agent/llm/`      `client.py`: LLMClient (messages.parse with a pydantic output model, cached
                           system prompt, effort), CostLedger (state/ledger/llm_cost.jsonl), Pricing
                           (configs/llm_pricing.yaml), hard monthly cap (LLM_MONTHLY_CAP_EUR), DRY_RUN.
-- `athex_agent/runs/`     [stage 6] jobs (fill, digest, decide, reconcile, score_views, build_dashboard),
-                          run ledger, idempotency, git helper.
+- `athex_agent/runs/`     `jobs.py` (fill / decide / bootstrap / dashboard; `Env` = live or dry-run roots),
+                          `ledger.py` (per-date job records, idempotency, first_live, missed runs),
+                          `orchestrate.py` (arm + cohort + seed instances, budget shedding order,
+                          random trade-rate matching), `git.py` (commit timestamps for the lookahead
+                          guard; commit-and-push with rebase retry), `__main__.py` (CLI).
 - `athex_agent/analysis/` `fee_drag.py` (tables + per-book metric), `fastsim.py` (fast simulator with
                           live-engine semantics, cross-checked to the cent), `historical.py` (rolling
                           3-month windows at both capital levels -> docs/data/historical.json).
                           View scoring arrives in stage 5.
-- `athex_agent/dashboard/` [stage 6] static site generator -> `docs/` (GitHub Pages).
+- `athex_agent/dashboard/` `build.py` writes docs/data/summary.json + docs/data/arms/<key>.json and
+                          copies `index.html` (vanilla JS + Plotly from cdnjs; equity curves with the
+                          random band, headline metrics, A/B view, view scoring with effective n,
+                          fee drag with re-costing and profile badges, historical null, arm detail
+                          with reasoning and cited links, health).
 
 ## Repo layout
 ```
@@ -55,7 +62,9 @@ data/      prices/, digests/, news/ (committed by the daily workflow)
 state/     arms/<id>/{config.lock.json, journal.json, views/, decisions/, books/<book>/book.json}, ledger/
 docs/      GitHub Pages site (generated)
 tests/     pytest suite
-.github/workflows/  ci.yml (tests on every push), daily.yml, historical.yml, pages.yml [stages 6-7]
+.github/workflows/  ci.yml (tests on every push), daily.yml (fill 09:00 UTC, decide 18:30 UTC, manual
+                    dispatch, concurrency group `trading`, commits data/state/docs with [skip ci]),
+                    historical.yml (manual), pages.yml (deploys docs/ on push)
 ```
 
 ## How to run

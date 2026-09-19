@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATHEX paper-trading experiment</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.2/plotly.min.js"></script>
+<style>
+  :root { --bg:#fafafa; --fg:#1a1a1a; --muted:#666; --line:#ddd; --accent:#1f5fbf; --warn:#b45309; --bad:#b91c1c; --ok:#15803d; }
+  body { margin:0; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--fg); background:var(--bg); }
+  header { padding:14px 20px; border-bottom:1px solid var(--line); background:#fff; display:flex; gap:18px; flex-wrap:wrap; align-items:baseline; }
+  header h1 { font-size:18px; margin:0; }
+  .banner { background:#fef3c7; color:#92400e; padding:8px 20px; font-weight:600; }
+  main { padding:16px 20px; max-width:1500px; margin:0 auto; }
+  section { background:#fff; border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin:0 0 16px; }
+  h2 { font-size:15px; margin:0 0 10px; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  th, td { text-align:right; padding:4px 8px; border-bottom:1px solid #eee; white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; }
+  th { color:var(--muted); font-weight:600; position:sticky; top:0; background:#fff; }
+  .scroll { overflow-x:auto; }
+  .muted { color:var(--muted); }
+  .pos { color:var(--ok); } .neg { color:var(--bad); } .warn { color:var(--warn); font-weight:600; }
+  .badge { display:inline-block; padding:1px 6px; border-radius:4px; font-size:11px; font-weight:700; background:#fee2e2; color:#991b1b; margin-left:6px; }
+  .controls { display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:10px; }
+  .controls label { margin-right:8px; }
+  .pill { display:inline-block; padding:2px 8px; border:1px solid var(--line); border-radius:12px; margin:2px 4px 2px 0; cursor:pointer; user-select:none; }
+  .pill.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  button { font:inherit; padding:4px 10px; border:1px solid var(--line); background:#fff; border-radius:6px; cursor:pointer; }
+  details summary { cursor:pointer; font-weight:600; }
+  .small { font-size:12px; }
+  .cols { display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:14px; }
+  pre { white-space:pre-wrap; font-size:12px; background:#f6f6f6; padding:8px; border-radius:6px; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>ATHEX paper-trading experiment</h1>
+  <span id="asof" class="muted"></span>
+  <span id="health" class="muted"></span>
+</header>
+<div id="banner" class="banner" hidden>DRY RUN: plumbing validation on a separate state root. Not evidence of anything.</div>
+<main>
+  <section>
+    <div class="controls">
+      <span>Book: <select id="book"></select></span>
+      <span>Cohort: <select id="cohort"><option value="">base instances</option></select></span>
+      <span id="pills"></span>
+      <button id="all">all</button><button id="none">none</button>
+    </div>
+    <div id="equity" style="height:420px"></div>
+    <p class="small muted">Equity in EUR after fees and slippage, whole shares, next-open fills. Random picker shown as its median and 5-95% band across seeds. bh_sp500 = the primary benchmark (SXR8.DE).</p>
+  </section>
+
+  <section>
+    <h2>Headline metrics <span class="muted small">(selected book; percentile = share of random-picker books this arm beat)</span></h2>
+    <div class="scroll"><table id="metrics"></table></div>
+  </section>
+
+  <section>
+    <h2>A/B view: each LLM arm versus the base arm A</h2>
+    <div class="scroll"><table id="ab"></table></div>
+  </section>
+
+  <section>
+    <h2>View-level scoring <span class="muted small">(headline n = EFFECTIVE, non-overlapping views; raw count in parentheses)</span></h2>
+    <div class="cols">
+      <div class="scroll"><table id="views"></table></div>
+      <div id="decay" style="height:300px"></div>
+    </div>
+    <p class="small muted">Signed excess return vs the equal-weight universe from the next open, 5/10/20/30 sessions ahead; 95% interval from a block bootstrap over date blocks of the horizon length. Pre-registered outcome: edge at 5 days but none at 20/30 means this approach does not fit a fee-constrained small account.</p>
+  </section>
+
+  <section>
+    <h2>Fee drag and broker profiles</h2>
+    <div class="cols">
+      <div class="scroll"><table id="feedrag"></table></div>
+      <div class="scroll"><table id="profiles"></table></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Historical null distribution (rule-based only)</h2>
+    <div id="historical" class="small"></div>
+  </section>
+
+  <section>
+    <h2>Arm detail</h2>
+    <div class="controls"><span>Arm: <select id="armsel"></select></span></div>
+    <div id="detail"></div>
+  </section>
+
+  <section>
+    <h2>System health</h2>
+    <div id="healthbox" class="small"></div>
+  </section>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const fmtPct = (x, d = 1) => (x == null || Number.isNaN(x)) ? "–" : (x * 100).toFixed(d) + "%";
+const fmtEur = (x) => x == null ? "–" : "€" + Number(x).toFixed(2);
+const sgn = (x) => x == null ? "" : (x >= 0 ? "pos" : "neg");
+let S = null, selected = new Set(), book = "10k", cohort = "";
+
+async function load() {
+  S = await (await fetch("data/summary.json?" + Date.now())).json();
+  $("#asof").textContent = `as of ${S.as_of} · generated ${S.generated_at.slice(0, 16).replace("T", " ")} UTC`;
+  if (S.dry_run) $("#banner").hidden = false;
+  const h = S.health;
+  $("#health").textContent = `missed runs: ${h.n_missed} · LLM this month: €${(h.llm_spent_month_eur || 0).toFixed(2)} / €${h.llm_cap_eur}`;
+  const bookSel = $("#book");
+  S.books.forEach(b => { const o = document.createElement("option"); o.value = b.id; o.textContent = `${b.label} (€${b.capital})`; bookSel.appendChild(o); });
+  book = S.books.find(b => b.primary)?.id || S.books[0].id; bookSel.value = book;
+  const cohorts = [...new Set(S.arms.map(a => a.cohort).filter(Boolean))].sort();
+  cohorts.forEach(c => { const o = document.createElement("option"); o.value = c; o.textContent = "cohort " + c; $("#cohort").appendChild(o); });
+  const armsel = $("#armsel");
+  S.arms.forEach(a => { const o = document.createElement("option"); o.value = a.key; o.textContent = a.key; armsel.appendChild(o); });
+  bookSel.onchange = () => { book = bookSel.value; render(); };
+  $("#cohort").onchange = () => { cohort = $("#cohort").value; buildPills(); render(); };
+  armsel.onchange = () => showDetail(armsel.value);
+  $("#all").onclick = () => { visibleArms().forEach(a => selected.add(a.key)); render(); };
+  $("#none").onclick = () => { selected.clear(); render(); };
+  buildPills();
+  render();
+  renderProfiles(); renderHistorical(); renderHealth();
+  if (S.arms.length) showDetail(S.arms[0].key);
+}
+function visibleArms() {
+  return S.arms.filter(a => (cohort ? a.cohort === cohort : a.cohort == null) && !(a.arm_id === "random" && a.instance));
+}
+function randomInstances() { return S.arms.filter(a => a.arm_id === "random" && (cohort ? a.cohort === cohort : a.cohort == null)); }
+function buildPills() {
+  const box = $("#pills"); box.innerHTML = "";
+  selected = new Set(visibleArms().map(a => a.key));
+  visibleArms().forEach(a => {
+    const p = document.createElement("span"); p.className = "pill on"; p.textContent = a.key;
+    p.onclick = () => { if (selected.has(a.key)) selected.delete(a.key); else selected.add(a.key); render(); };
+    box.appendChild(p);
+  });
+  const r = randomInstances(); if (r.length) { const p = document.createElement("span"); p.className = "pill on"; p.textContent = `random (${r.length} seeds)`; p.onclick = () => { if (selected.has("__random")) selected.delete("__random"); else selected.add("__random"); render(); }; selected.add("__random"); box.appendChild(p); }
+}
+function render() {
+  document.querySelectorAll("#pills .pill").forEach(p => p.classList.toggle("on", selected.has(p.textContent.startsWith("random (") ? "__random" : p.textContent)));
+  const traces = [];
+  visibleArms().filter(a => selected.has(a.key) && a.books[book]).forEach(a => {
+    const nav = a.books[book].nav;
+    traces.push({ x: nav.map(r => r[0]), y: nav.map(r => r[1]), name: a.key, mode: "lines", line: { width: a.arm_id === "A" ? 3 : 1.5, dash: a.kind === "rule" ? "dot" : "solid" } });
+  });
+  const rnd = randomInstances().filter(a => a.books[book]);
+  if (selected.has("__random") && rnd.length) {
+    const dates = rnd[0].books[book].nav.map(r => r[0]);
+    const q = (p) => dates.map((d, i) => { const v = rnd.map(a => a.books[book].nav[i]?.[1]).filter(x => x != null).sort((x, y) => x - y); return v.length ? v[Math.floor(p * (v.length - 1))] : null; });
+    traces.push({ x: dates, y: q(0.95), name: "random p95", mode: "lines", line: { width: 0 }, showlegend: false, hoverinfo: "skip" });
+    traces.push({ x: dates, y: q(0.05), name: "random 5-95%", mode: "lines", fill: "tonexty", fillcolor: "rgba(120,120,120,0.15)", line: { width: 0 } });
+    traces.push({ x: dates, y: q(0.5), name: "random median", mode: "lines", line: { color: "#777", dash: "dash" } });
+  }
+  Plotly.newPlot("equity", traces, { margin: { t: 10, r: 10, l: 50, b: 40 }, yaxis: { title: "NAV (EUR)" }, legend: { orientation: "h" } }, { responsive: true, displayModeBar: false });
+  renderMetrics(); renderAB(); renderViews(); renderFeeDrag();
+}
+function renderMetrics() {
+  const rows = visibleArms().filter(a => a.books[book]).map(a => { const m = a.books[book].metrics; const vs = a.view_scores?.horizons?.["20"]; return `<tr>
+    <td>${a.key}${a.books[book].fee_badge ? `<span class="badge">${a.books[book].fee_badge}</span>` : ""}</td>
+    <td class="${sgn(m.return)}">${fmtPct(m.return)}</td><td class="${sgn(m.vs_sp500)}">${fmtPct(m.vs_sp500)}</td><td class="${sgn(m.vs_aetf)}">${fmtPct(m.vs_aetf)}</td>
+    <td>${fmtPct(m.percentile_vs_random_live, 0)}</td><td>${fmtPct(m.percentile_vs_random_historical, 0)}</td>
+    <td>${m.replica_spread != null ? fmtPct(m.replica_spread) : "–"}</td>
+    <td class="neg">${fmtPct(m.max_drawdown)}</td><td>${fmtPct(m.volatility_annualized)}</td>
+    <td>${m.n_trades}</td><td>${fmtEur(m.fees_eur)}</td><td class="warn">${fmtPct(m.fees_pct_annualized)}</td><td>${fmtPct(m.slippage_pct_annualized)}</td>
+    <td>${a.llm_cost_month_eur != null ? fmtEur(a.llm_cost_month_eur) : "–"}</td>
+    <td>${vs ? `${vs.n_effective} (${vs.n_raw})` : "–"}</td><td>${vs ? fmtPct(vs.hit_rate, 0) : "–"}</td>
+    <td>${a.books[book].n_divergences}</td></tr>`; }).join("");
+  $("#metrics").innerHTML = `<tr><th>arm</th><th>return</th><th>vs S&P 500 (EUR)</th><th>vs AETF</th><th>pct vs random (live)</th><th>pct vs random (hist.)</th><th>replica spread</th><th>max DD</th><th>vol (ann.)</th><th>trades</th><th>fees+tax</th><th>fee drag (ann.)</th><th>slippage (ann.)</th><th>LLM € (month)</th><th>views n_eff (raw)</th><th>hit 20d</th><th>divergences</th></tr>${rows}`;
+}
+function renderAB() {
+  const base = S.arms.find(a => a.key === "A" && a.books[book]);
+  const rows = visibleArms().filter(a => a.base_arm === "A" && a.books[book]).map(a => {
+    const d = base ? a.books[book].metrics.return - base.books[book].metrics.return : null;
+    const v = a.view_scores?.horizons?.["20"]?.mean_signed_excess, vb = base?.view_scores?.horizons?.["20"]?.mean_signed_excess;
+    return `<tr><td>${a.key}</td><td>${a.factor.length ? a.factor.join(", ") : "replica"}</td><td>${a.model || ""}</td><td class="${sgn(d)}">${fmtPct(d)}</td><td class="${sgn(v != null && vb != null ? v - vb : null)}">${v != null && vb != null ? fmtPct(v - vb, 2) : "–"}</td></tr>`;
+  }).join("");
+  $("#ab").innerHTML = `<tr><th>arm</th><th>single factor changed</th><th>model</th><th>return minus A</th><th>20d view excess minus A</th></tr>${rows || "<tr><td colspan=5 class=muted>no LLM arms yet</td></tr>"}`;
+}
+function renderViews() {
+  const arms = visibleArms().filter(a => a.view_scores);
+  const rows = arms.flatMap(a => Object.entries(a.view_scores.horizons).map(([h, v]) => `<tr><td>${a.key}</td><td>${h}</td><td><b>${v.n_effective}</b> <span class=muted>(${v.n_raw})</span></td><td>${fmtPct(v.hit_rate, 0)}</td><td class="${sgn(v.mean_signed_excess)}">${fmtPct(v.mean_signed_excess, 2)}</td><td>${v.ci95[0] != null ? fmtPct(v.ci95[0], 2) + " … " + fmtPct(v.ci95[1], 2) : "–"}</td><td>${v.significant ? "yes" : "no"}</td></tr>`));
+  $("#views").innerHTML = `<tr><th>arm</th><th>horizon</th><th>n effective (raw)</th><th>hit rate</th><th>mean signed excess</th><th>95% CI</th><th>CI > 0</th></tr>${rows.join("") || "<tr><td colspan=7 class=muted>no scored views yet</td></tr>"}`;
+  const traces = arms.map(a => ({ x: Object.keys(a.view_scores.horizons).map(Number), y: Object.values(a.view_scores.horizons).map(v => v.mean_signed_excess), name: a.key, mode: "lines+markers" }));
+  Plotly.newPlot("decay", traces, { margin: { t: 10, r: 10, l: 50, b: 40 }, xaxis: { title: "horizon (sessions)" }, yaxis: { title: "mean signed excess", tickformat: ".2%" }, legend: { orientation: "h" } }, { responsive: true, displayModeBar: false });
+}
+function renderFeeDrag() {
+  const profs = S.fee_profiles.map(p => p.id);
+  const rows = visibleArms().filter(a => a.books[book]).map(a => { const rc = a.books[book].recost_fees_eur || {}; return `<tr><td>${a.key}</td><td>${a.books[book].fee_profile}</td>${profs.map(p => `<td>${rc[p] != null ? fmtEur(rc[p]) : "–"}</td>`).join("")}</tr>`; }).join("");
+  $("#feedrag").innerHTML = `<tr><th>arm</th><th>book profile</th>${profs.map(p => { const pr = S.fee_profiles.find(x => x.id === p); return `<th>${p}${pr.badge ? `<span class="badge">${pr.badge}</span>` : ""}</th>`; }).join("")}</tr>${rows}`;
+}
+function renderProfiles() {
+  $("#profiles").innerHTML = `<tr><th>profile</th><th>source</th></tr>` + S.fee_profiles.map(p => `<tr><td>${p.id}${p.badge ? `<span class="badge">${p.badge}</span>` : ""}<br><span class="muted small">${p.name}</span>${p.warnings.map(w => `<br><span class="warn small">${w}</span>`).join("")}</td><td class="small" style="white-space:normal;text-align:left">${p.source}</td></tr>`).join("");
+}
+function renderHistorical() {
+  const h = S.historical; const box = $("#historical");
+  if (!h || !h.pooled) { box.innerHTML = `<p class="muted">Not run yet: trigger the "Historical study" workflow.</p>`; return; }
+  const strat = ["random", "momentum", "equal_weight", "bh_aetf"];
+  box.innerHTML = `<p>${h.n_windows} rolling 3-month windows. Excess return vs the S&P 500 in EUR (SXR8.DE) after fees:</p>` +
+    Object.entries(h.pooled).map(([b, s]) => `<table><tr><th>book ${b}</th><th>P(beat S&P)</th><th>p05</th><th>p25</th><th>median</th><th>p75</th><th>p95</th><th>n</th></tr>` +
+      strat.map(k => s[k] ? `<tr><td>${k}</td><td>${fmtPct(s[k].p_beat_sp500, 0)}</td><td>${fmtPct(s[k].p05)}</td><td>${fmtPct(s[k].p25)}</td><td>${fmtPct(s[k].p50)}</td><td>${fmtPct(s[k].p75)}</td><td>${fmtPct(s[k].p95)}</td><td>${s[k].n}</td></tr>` : "").join("") + `</table>`).join("") +
+    `<p class="muted">Caveats: ${(h.caveats || []).join(" ")}</p>`;
+}
+function renderHealth() {
+  const h = S.health;
+  const src = (h.sources || []).map(s => `<tr><td>${s.source_id}</td><td class="${s.ok ? "pos" : (s.skipped ? "muted" : "neg")}">${s.ok ? "ok" : (s.skipped ? "skipped" : "FAILED")}</td><td>${s.items}</td><td style="white-space:normal;text-align:left">${s.skipped || s.error || ""}</td></tr>`).join("");
+  $("#healthbox").innerHTML = `<p>First live run: ${h.first_live || "–"} · missed runs: <b class="${h.n_missed ? "neg" : "pos"}">${h.n_missed}</b> · LLM spend this month €${(h.llm_spent_month_eur || 0).toFixed(2)} of €${h.llm_cap_eur}${h.digest ? ` · digest: ${h.digest.items} items (${h.digest.model})` : ""}</p>` +
+    (h.missed?.length ? `<p class="neg">Missed: ${h.missed.map(m => `${m.date} ${m.job} (${m.status})`).join(", ")}</p>` : "") +
+    (h.digest?.warnings?.length ? `<p class="warn">${h.digest.warnings.join("<br>")}</p>` : "") +
+    `<details><summary>Sources today</summary><table><tr><th>source</th><th>status</th><th>items</th><th>note</th></tr>${src}</table></details>` +
+    `<details><summary>Recent runs</summary><pre>${JSON.stringify(h.last_runs, null, 1)}</pre></details>`;
+}
+async function showDetail(key) {
+  const a = S.arms.find(x => x.key === key); if (!a) return;
+  const d = await (await fetch(`data/arms/${key.replace("@", "__")}.json?` + Date.now())).json();
+  const bk = d.books[book] || Object.values(d.books)[0] || { trades: [], divergences: [] };
+  const hold = (a.books[book]?.holdings || []).map(h => `<tr><td>${h.ticker}</td><td>${h.shares}</td><td>${fmtEur(h.cost_basis)}</td></tr>`).join("");
+  const trades = (bk.trades || []).slice(-40).reverse().map(t => `<tr><td>${t.fill_date}</td><td>${t.side}</td><td>${t.ticker}</td><td>${t.shares}</td><td>${Number(t.fill_price).toFixed(3)}</td><td>${fmtEur(t.commission + t.handling + t.exchange + t.sales_tax)}</td><td class="${sgn(t.realized_pnl)}">${t.realized_pnl != null ? fmtEur(t.realized_pnl) : ""}</td></tr>`).join("");
+  const div = (bk.divergences || []).slice(-30).reverse().map(x => `<tr><td>${x.date}</td><td>${x.ticker}</td><td class="warn">${x.kind}</td><td style="white-space:normal;text-align:left">${x.detail}</td></tr>`).join("");
+  const dec = (d.decisions || []).slice(-15).reverse().map(x => `<details><summary>${x.date} · ${x.actions.length} action(s) · ${x.views.length} view(s)${x.meta?.hold_reason ? ` · <span class="warn">HOLD: ${x.meta.hold_reason}</span>` : ""}${x.meta?.cost ? ` · €${Number(x.meta.cost.eur || 0).toFixed(3)}` : ""}</summary>
+      <p><i>${x.regime_note || ""}</i></p>
+      ${Object.entries(x.books).map(([b, v]) => `<p><b>${b}</b>: orders ${v.orders.join(", ") || "none"}${v.blocked.length ? `; <span class="warn">blocked: ${v.blocked.join("; ")}</span>` : ""}</p>`).join("")}
+      ${x.actions.length ? `<p>Actions: ${x.actions.map(t => `${t.kind} ${t.ticker} — ${t.reason || ""}`).join("; ")}</p>` : ""}
+      <table><tr><th>ticker</th><th>view</th><th>conv.</th><th>thesis</th><th>cited</th></tr>${x.views.map(v => `<tr><td>${v.ticker}</td><td>${v.view}</td><td>${v.conviction}</td><td style="white-space:normal;text-align:left">${v.thesis}</td><td style="white-space:normal;text-align:left">${(v.cited_item_ids || []).map(i => d.items?.[i] ? `<a href="${d.items[i].url}" target="_blank" rel="noopener">${d.items[i].source} r${d.items[i].reliability}</a>` : i).join(", ")}</td></tr>`).join("")}</table>
+      <p class="small muted">Full model input: ${x.prompt_file}</p></details>`).join("");
+  const journal = d.journal ? `<details><summary>Journal</summary><pre>${JSON.stringify(d.journal, null, 1)}</pre></details>` : "";
+  $("#detail").innerHTML = `<p class="muted">${a.description}</p><div class="cols">
+    <div><h3 class="small">Holdings (${book})</h3><table><tr><th>ticker</th><th>shares</th><th>cost basis</th></tr>${hold || "<tr><td colspan=3 class=muted>cash</td></tr>"}</table></div>
+    <div><h3 class="small">Trades (last 40)</h3><div class="scroll"><table><tr><th>filled</th><th>side</th><th>ticker</th><th>shares</th><th>price</th><th>fees</th><th>realized</th></tr>${trades}</table></div></div>
+    <div><h3 class="small">Divergences (last 30)</h3><table><tr><th>date</th><th>ticker</th><th>kind</th><th>detail</th></tr>${div || "<tr><td colspan=4 class=muted>none</td></tr>"}</table></div>
+  </div><h3 class="small">Decisions and reasoning</h3>${dec}${journal}`;
+}
+load().catch(e => { document.body.insertAdjacentHTML("afterbegin", `<div class="banner">Failed to load data: ${e}</div>`); });
+</script>
+</body>
+</html>
