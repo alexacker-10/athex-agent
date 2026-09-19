@@ -23,15 +23,23 @@ instrument; the books test whether views survive execution.
                           log; `AsOfPrices` view = the no-lookahead guard), `actions.py` (dividends,
                           splits), `sources.py` (PriceSource protocol + YahooSource), `update.py`
                           (per-ticker update with health report, quote completion for lagging bars),
-                          `smoke.py` (network smoke test). News adapters arrive in stage 4.
-- `athex_agent/digest/`   [stage 4] dedup + Haiku summarisation, shared once per day.
+                          `smoke.py` (network smoke test), `news.py` (NewsItem, RSS/Reddit/ATHEX
+                          adapters, robots.txt cache, per-source health, NewsStore with rolling
+                          seen-ids), `articles.py` (bounded body fetch).
+- `athex_agent/digest/`   `dedup.py` (accent-folded shingles), `tickers.py` (company aliases from
+                          configs/companies.yaml + macro terms), `models.py` (Digest, DigestItem,
+                          the model's DigestOutput schema, `Digest.view(toggles)`), `build.py` (ingest
+                          -> store -> dedup -> tag -> rank -> Haiku once -> data/digests/<date>.json;
+                          mechanical fallback when the model is unavailable).
 - `athex_agent/arms/`     `proposal.py` (View/Action/Proposal), `deciders.py` (buy-and-hold, random,
                           momentum, equal weight; LLM decider arrives in stage 5), `runner.py` (ArmRunner:
                           per-arm state dir, both books, fills, corporate actions, decisions, NAV series),
                           `simulate.py` (day-by-day driver for dry runs and tests).
 - `athex_agent/portfolio/rules.py` (rules layer: stop-loss, hold, order cap, churn cap, fee budget,
                           sizing, divergences) and `fill_engine.py` (next-open fills + LookaheadGuard).
-- `athex_agent/llm/`      [stage 5] Anthropic client wrapper, structured outputs, cost meter, budget guard.
+- `athex_agent/llm/`      `client.py`: LLMClient (messages.parse with a pydantic output model, cached
+                          system prompt, effort), CostLedger (state/ledger/llm_cost.jsonl), Pricing
+                          (configs/llm_pricing.yaml), hard monthly cap (LLM_MONTHLY_CAP_EUR), DRY_RUN.
 - `athex_agent/runs/`     [stage 6] jobs (fill, digest, decide, reconcile, score_views, build_dashboard),
                           run ledger, idempotency, git helper.
 - `athex_agent/analysis/` `fee_drag.py` (tables + per-book metric), `fastsim.py` (fast simulator with

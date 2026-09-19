@@ -1,0 +1,164 @@
+# News, official, macro and rumor sources. Every adapter fails gracefully; a broken source is
+# recorded in the source-health ledger and never stops a run. robots.txt is checked before fetching.
+# reliability: 5 = primary/official, 4 = established financial press, 3 = general press,
+#              2 = opinionated/aggregator, 1 = anonymous social media (potentially manipulative).
+user_agent: "athex-agent/0.1 (+https://github.com/alexacker-10/athex-agent; paper-trading research)"
+sources:
+  - id: athex_announcements
+    kind: athex_html
+    url: https://www.athexgroup.gr/el/web/guest/company-announcements
+    category: official
+    reliability: 5
+    lang: el
+    enabled: true
+    note: Returns 403 to non-browser clients in probes; arm C degrades to prices-only when it fails.
+  - id: ecb_press
+    kind: rss
+    url: https://www.ecb.europa.eu/rss/press.html
+    category: macro
+    reliability: 5
+    lang: en
+    enabled: true
+  - id: naftemporiki
+    kind: rss
+    url: https://www.naftemporiki.gr/feed/
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_banks
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899001
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_insurance
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899002
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_energy
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899003
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_tourism
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899004
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_industry
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899005
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_retail
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899006
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_construction_realestate
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899007
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_food
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899008
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_transport
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899009
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_gaming
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899010
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_health
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899011
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: euro2day_tech_telecoms
+    kind: rss
+    url: https://www.euro2day.gr/rss.ashx?chiid=899012
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: ot_gr
+    kind: rss
+    url: https://www.ot.gr/feed/
+    category: news
+    reliability: 4
+    lang: el
+    enabled: true
+  - id: insider_gr
+    kind: rss
+    url: https://www.insider.gr/rss.xml
+    category: news
+    reliability: 3
+    lang: el
+    enabled: true
+  - id: newmoney
+    kind: rss
+    url: https://www.newmoney.gr/feed/
+    category: news
+    reliability: 3
+    lang: el
+    enabled: true
+  - id: mononews
+    kind: rss
+    url: https://www.mononews.gr/feed
+    category: news
+    reliability: 3
+    lang: el
+    enabled: true
+  - id: bankingnews
+    kind: rss
+    url: https://www.bankingnews.gr/rss
+    category: rumor
+    reliability: 2
+    lang: el
+    enabled: true
+    note: Opinionated, frequently speculative; treated as a rumor-tier source.
+  - id: reddit_greekstocks
+    kind: reddit
+    url: https://oauth.reddit.com/r/GreekStocks/new
+    category: rumor
+    reliability: 1
+    lang: mixed
+    enabled: true
+    note: Official Data API with OAuth client credentials (REDDIT_CLIENT_ID/SECRET); skipped without them.
+  - id: google_news_el
+    kind: google_news
+    url: https://news.google.com/rss/search?q={query}&hl=el&gl=GR&ceid=GR:el
+    category: news
+    reliability: 2
+    lang: el
+    enabled: false
+    note: Works, but news.google.com/robots.txt disallows /rss; off by default, enable at your discretion.
