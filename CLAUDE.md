@@ -25,13 +25,19 @@ instrument; the books test whether views survive execution.
                           (per-ticker update with health report, quote completion for lagging bars),
                           `smoke.py` (network smoke test). News adapters arrive in stage 4.
 - `athex_agent/digest/`   [stage 4] dedup + Haiku summarisation, shared once per day.
-- `athex_agent/arms/`     [stage 3/5] Decider interface: LLM, random, momentum, buy-and-hold, equal-weight.
-- `athex_agent/portfolio/rules.py`, `book.py`, `fill_engine.py` [stage 3] rules layer, per-book sizing,
-                          fills with the lookahead guard.
+- `athex_agent/arms/`     `proposal.py` (View/Action/Proposal), `deciders.py` (buy-and-hold, random,
+                          momentum, equal weight; LLM decider arrives in stage 5), `runner.py` (ArmRunner:
+                          per-arm state dir, both books, fills, corporate actions, decisions, NAV series),
+                          `simulate.py` (day-by-day driver for dry runs and tests).
+- `athex_agent/portfolio/rules.py` (rules layer: stop-loss, hold, order cap, churn cap, fee budget,
+                          sizing, divergences) and `fill_engine.py` (next-open fills + LookaheadGuard).
 - `athex_agent/llm/`      [stage 5] Anthropic client wrapper, structured outputs, cost meter, budget guard.
 - `athex_agent/runs/`     [stage 6] jobs (fill, digest, decide, reconcile, score_views, build_dashboard),
                           run ledger, idempotency, git helper.
-- `athex_agent/analysis/` [stage 3/5] historical windows, null distributions, view scoring, fee drag.
+- `athex_agent/analysis/` `fee_drag.py` (tables + per-book metric), `fastsim.py` (fast simulator with
+                          live-engine semantics, cross-checked to the cent), `historical.py` (rolling
+                          3-month windows at both capital levels -> docs/data/historical.json).
+                          View scoring arrives in stage 5.
 - `athex_agent/dashboard/` [stage 6] static site generator -> `docs/` (GitHub Pages).
 
 ## Repo layout
@@ -52,7 +58,9 @@ cp .env.example .env                                # local secrets; never commi
 # local dry run (available from stage 6): python -m athex_agent.runs.decide --as-of 2026-10-01 --dry-run
 ```
 Network smoke test of the price feed: `python -m athex_agent.data.smoke` (writes to .cache/smoke/).
-Fee-drag table used in DESIGN.md §1: `python -m athex_agent.analysis.fee_drag` [stage 3].
+Fee-drag tables (DESIGN.md §1): `python -m athex_agent.analysis.fee_drag`
+Historical study: `python -m athex_agent.analysis.historical --start 2011-01-01 --seeds 200`
+(needs data/prices and data/actions populated; see stage 6 jobs).
 
 ## Coding conventions
 - Python 3.12, ruff (line length 100, rules E/F/I/B/UP/W), `ruff format`. Pinned dependencies in

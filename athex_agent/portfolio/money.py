@@ -8,9 +8,9 @@ _CENT = Decimal("0.01")
 
 
 def round_cents(value: float) -> float:
-    return float(Decimal(repr(value)).quantize(_CENT, rounding=ROUND_HALF_UP))
+    return float(Decimal(repr(float(value))).quantize(_CENT, rounding=ROUND_HALF_UP))
 
 
 def round_price(value: float, places: int = 4) -> float:
     q = Decimal(1).scaleb(-places)
-    return float(Decimal(repr(value)).quantize(q, rounding=ROUND_HALF_UP))
+    return float(Decimal(repr(float(value))).quantize(q, rounding=ROUND_HALF_UP))
