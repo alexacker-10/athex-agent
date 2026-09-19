@@ -1,5 +1,5 @@
 # Development / CI dependencies (pinned). Install with: pip install -r requirements-dev.txt
--r requirements.txt
+-r requirements.lock.txt
 -e .
 pytest==9.1.1
 ruff==0.16.8

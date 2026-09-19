@@ -1,6 +1,8 @@
-# Runtime dependencies (pinned). Install with: pip install -r requirements.txt
+# Direct runtime dependencies (pinned). The fully resolved set is in requirements.lock.txt.
 pydantic==2.13.5
 PyYAML==6.0.3
 pandas==3.0.6
 numpy==2.5.3
 python-dateutil==2.9.0.post0
+yfinance==1.7.0
+tzdata==2026.4

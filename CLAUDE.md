@@ -18,8 +18,12 @@ instrument; the books test whether views survive execution.
 - `athex_agent/portfolio/` `fees.py` (itemised broker fees per profile), `slippage.py` (half-spread tiers +
                           impact, ADV cap), `orders.py` (Order/Fill), `accounting.py` (BookState: cash, FIFO
                           lots, dividends, splits, periodic fees, divergences).
-- `athex_agent/data/`     [stage 2] price sources (Yahoo chart + quote/intraday), PriceStore with `as_of()`,
-                          ATHEX calendar, corporate actions, news adapters, source health.
+- `athex_agent/data/`     `calendar.py` (ATHEX holidays, session times, trading-day arithmetic),
+                          `prices.py` (PriceStore: CSV per ticker, provisional vs settled bars, revision
+                          log; `AsOfPrices` view = the no-lookahead guard), `actions.py` (dividends,
+                          splits), `sources.py` (PriceSource protocol + YahooSource), `update.py`
+                          (per-ticker update with health report, quote completion for lagging bars),
+                          `smoke.py` (network smoke test). News adapters arrive in stage 4.
 - `athex_agent/digest/`   [stage 4] dedup + Haiku summarisation, shared once per day.
 - `athex_agent/arms/`     [stage 3/5] Decider interface: LLM, random, momentum, buy-and-hold, equal-weight.
 - `athex_agent/portfolio/rules.py`, `book.py`, `fill_engine.py` [stage 3] rules layer, per-book sizing,
@@ -47,6 +51,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 cp .env.example .env                                # local secrets; never commit .env
 # local dry run (available from stage 6): python -m athex_agent.runs.decide --as-of 2026-10-01 --dry-run
 ```
+Network smoke test of the price feed: `python -m athex_agent.data.smoke` (writes to .cache/smoke/).
 Fee-drag table used in DESIGN.md §1: `python -m athex_agent.analysis.fee_drag` [stage 3].
 
 ## Coding conventions
