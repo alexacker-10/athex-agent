@@ -158,6 +158,7 @@ class BookState(_Mutable):
     account_fees_paid_eur: float = 0.0
     slippage_cost_eur: float = 0.0
     dividends_received_eur: float = 0.0
+    actions_applied_through: date | None = None
 
     # ---- construction / persistence
     @classmethod

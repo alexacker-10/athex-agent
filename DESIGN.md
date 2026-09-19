@@ -86,7 +86,7 @@ Per order, EUR:
 | NBG Securities | 10,000 | 2,500 | 27.06 | 29.56 | 56.62 | 2.27% | 0.57% |
 | DEGIRO | 1,000 | 250 | 4.90 | 5.15 | 10.05 | 4.02% | 1.01% |
 | Freedom24 Smart | 1,000 | 250 | 2.40 | 2.65 | 5.05 | 2.02% | 0.51% |
-| Piraeus online* | 1,000 | 250 | 1.53 | 1.78 | 3.31 | 1.32% | 0.33% |
+| Piraeus online* | 1,000 | 250 | 1.54 | 1.79 | 3.33 | 1.33% | 0.33% |
 | Eurobank Trader | 1,000 | 250 | 6.74 | 6.99 | 13.73 | 5.49% | 1.37% |
 | NBG Securities | 1,000 | 250 | 5.66 | 5.91 | 11.56 | 4.62% | 1.16% |
 
@@ -96,7 +96,7 @@ Annual fee drag, % of starting NAV, year 1 including the initial 4 buys; a swap 
 |---|---|---|---|---|
 | DEGIRO | 10,000 | 0.93% | 1.67% | 2.72% |
 | Freedom24 Smart | 10,000 | 1.14% | 2.02% | 3.07% |
-| Piraeus online* (+EUR 20/yr account fee) | 10,000 | 2.08% | 3.53% | 4.58% |
+| Piraeus online* (+EUR 16/yr account fee) | 10,000 | 2.04% | 3.49% | 4.54% |
 | Eurobank Trader | 10,000 | 1.93% | 3.41% | 4.46% |
 | NBG Securities | 10,000 | 4.48% | 7.88% | 8.93% |
 | DEGIRO | 1,000 | 7.99% | 14.02% | 15.07% |
