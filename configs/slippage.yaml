@@ -1,0 +1,12 @@
+# Half-spread by 20-day average daily EUR volume (tiers evaluated from the largest ADV down), plus an impact term.
+tiers:
+  - adv_at_least_eur: 5000000
+    half_spread_pct: 0.0010
+  - adv_at_least_eur: 1000000
+    half_spread_pct: 0.0025
+  - adv_at_least_eur: 300000
+    half_spread_pct: 0.0060
+  - adv_at_least_eur: 0
+    half_spread_pct: 0.0100
+impact_coeff: 0.001              # extra fraction = impact_coeff * sqrt(order_value / ADV)
+max_adv_fraction: 0.01           # orders above this fraction of ADV are refused

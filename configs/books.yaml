@@ -1,0 +1,18 @@
+# Every arm runs each of these books off identical decisions.
+books:
+  - id: "10k"
+    label: Experiment book
+    capital_eur: 10000
+    fee_profile: degiro
+    min_order_eur: 150
+    fee_budget_pct_month: 0.015
+    primary: true
+  - id: "1k"
+    label: Personal book
+    capital_eur: 1000
+    fee_profile: degiro
+    min_order_eur: 150
+    fee_budget_pct_month: 0.015
+    primary: false
+# Fee profiles the dashboard re-costs every trade log under (in addition to the book's own profile).
+recost_profiles: [degiro, freedom24_smart, piraeus_online, eurobank_trader, nbg_securities]

@@ -1,0 +1,17 @@
+id: bh_sp500
+description: PRIMARY benchmark - buy-and-hold iShares Core S&P 500 UCITS ETF (SXR8.DE, EUR, accumulating), DEGIRO ETF Core Selection fee.
+kind: rule
+base_arm: null
+factor: []
+rule:
+  kind: buy_hold
+  params:
+    ticker: SXR8.DE
+sources: {prices: true, official: false, news: false, macro: false, rumors: false}
+universe: base
+limits: base
+books: ["10k", "1k"]
+fee_profile_override: degiro_etf_core
+seed: 0
+cohort_start: null
+active: true

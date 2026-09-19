@@ -1,0 +1,22 @@
+id: C
+description: Official announcements + prices only - does news help at all?
+kind: llm
+base_arm: A
+factor: [sources.news, sources.macro, sources.rumors]
+llm:
+  model: claude-sonnet-5
+  effort: medium
+  prompt_variant: base
+  max_output_tokens: 8000
+sources:
+  prices: true
+  official: true
+  news: false
+  macro: false
+  rumors: false
+universe: base
+limits: base
+books: ["10k", "1k"]
+seed: 1
+cohort_start: null
+active: true

@@ -1,0 +1,22 @@
+id: nbg_securities
+name: NBG Securities, retail (1.00% up to EUR 3,000, tiered above, min EUR 5.00)
+source: >-
+  NBG Securities "Transactions in shares/ETFs/bonds listed on ATHEX or CSE", last update 12 May 2025. Execution fee 1.00% up to EUR 3,000, 0.75% for 3,001-9,000, 0.50% above (marginal); minimum EUR 5.00 per order; AthexClear rights 0.02%, clearing 0.03%, ATHEX commission 0.0125%, settlement instruction EUR 0.50; sales tax 0.10%; custody waived below EUR 15,000.
+as_of: 2025-05-12
+warnings: []
+badge: null
+commission_fixed_eur: 0.0
+handling_fixed_eur: 0.0
+commission_pct_tiers:
+  - up_to: 3000
+    pct: 0.01
+  - up_to: 9000
+    pct: 0.0075
+  - up_to: null
+    pct: 0.005
+commission_per_share_eur: 0.0
+commission_min_eur: 5.00
+exchange_pct: 0.000625
+exchange_fixed_eur: 0.50
+sales_tax_pct: 0.001
+account_fee_tiers: []

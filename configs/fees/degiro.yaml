@@ -1,0 +1,16 @@
+id: degiro
+name: DEGIRO (Athens Stock Exchange, shares)
+source: >-
+  DEGIRO fee schedule, Basic/Active/Trader, updated 1 January 2026 (EUR 3.90 per order + EUR 1.00 handling fee; third-party costs included in the handling fee; transaction taxes passed on)
+as_of: 2026-01-01
+warnings: []
+badge: null
+commission_fixed_eur: 3.90
+handling_fixed_eur: 1.00
+commission_pct_tiers: []
+commission_per_share_eur: 0.0
+commission_min_eur: 0.0
+exchange_pct: 0.0
+exchange_fixed_eur: 0.0
+sales_tax_pct: 0.001
+account_fee_tiers: []

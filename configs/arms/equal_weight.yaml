@@ -1,0 +1,16 @@
+id: equal_weight
+description: Equal-weight universe rebalanced quarterly, capped by the same order limits (naive-diversified Greek diagnostic).
+kind: rule
+base_arm: null
+factor: []
+rule:
+  kind: equal_weight
+  params:
+    rebalance_months: 3
+sources: {prices: true, official: false, news: false, macro: false, rumors: false}
+universe: base
+limits: base
+books: ["10k", "1k"]
+seed: 0
+cohort_start: null
+active: true

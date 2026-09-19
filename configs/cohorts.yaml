@@ -1,0 +1,5 @@
+# Staggered cohorts: a fresh copy of each listed arm starts on the first trading day of every month.
+arms: [A, bh_sp500, bh_athex, random, momentum, equal_weight]
+frequency: monthly
+start_on: first_trading_day
+months: 12

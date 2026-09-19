@@ -1,0 +1,18 @@
+id: eurobank_trader
+name: Eurobank Equities, Eurobank Trader platform (0.35%, min EUR 6.00)
+source: >-
+  Eurobank Equities charges page (eurobankequities.gr/el/xreoseis): Eurobank Trader 0.35% min EUR 6.00; exchange & clearing 0.0325% + settlement 0.040% + EUR 0.50 per security per contract note + EUR 0.06 per executed order; sales tax 0.10%; custody only above EUR 15,000.
+as_of: 2026-09-20
+warnings: []
+badge: null
+commission_fixed_eur: 0.0
+handling_fixed_eur: 0.0
+commission_pct_tiers:
+  - up_to: null
+    pct: 0.0035
+commission_per_share_eur: 0.0
+commission_min_eur: 6.00
+exchange_pct: 0.000725
+exchange_fixed_eur: 0.56
+sales_tax_pct: 0.001
+account_fee_tiers: []

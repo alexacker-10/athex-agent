@@ -1,0 +1,18 @@
+id: freedom24_smart
+name: Freedom24, Smart plan (EUR 2.00 per order + EUR 0.02 per share)
+source: >-
+  Freedom Finance Europe, Appendix 11 Fee Schedule (US & Europe stocks; Smart plan); 2026 third-party reviews quote the same numbers. Direct ATHEX member since 2025, clearing via Piraeus Bank. Greek transaction tax passed on.
+as_of: 2026-01-01
+warnings:
+  - Per-share pricing makes low-priced names (e.g. CREDIA, BYLOT, ELHA) materially more expensive than DEGIRO at EUR 2,500 order size.
+  - No Athens-specific line in the published schedule; modelled under the "Europe" tariff.
+badge: null
+commission_fixed_eur: 2.00
+handling_fixed_eur: 0.0
+commission_pct_tiers: []
+commission_per_share_eur: 0.02
+commission_min_eur: 0.0
+exchange_pct: 0.0
+exchange_fixed_eur: 0.0
+sales_tax_pct: 0.001
+account_fee_tiers: []

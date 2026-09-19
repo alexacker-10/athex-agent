@@ -1,0 +1,28 @@
+# secrets and local env
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# local artifacts / caches (never commit)
+.cache/
+tmp/
+*.log
+data/cache/
+state/local/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store

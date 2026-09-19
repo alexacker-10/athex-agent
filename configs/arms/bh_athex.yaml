@@ -1,0 +1,16 @@
+id: bh_athex
+description: Greece diagnostic - buy-and-hold Alpha ETF FTSE/ATHEX Large Cap (AETF.AT) under the Greek fee model.
+kind: rule
+base_arm: null
+factor: []
+rule:
+  kind: buy_hold
+  params:
+    ticker: AETF.AT
+sources: {prices: true, official: false, news: false, macro: false, rumors: false}
+universe: base
+limits: base
+books: ["10k", "1k"]
+seed: 0
+cohort_start: null
+active: true

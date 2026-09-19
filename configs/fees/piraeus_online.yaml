@@ -1,0 +1,25 @@
+id: piraeus_online
+name: Piraeus Securities, online trading (0.35%, minimum not published)
+source: >-
+  Piraeus Securities price list ("Τιμολόγιο βασικών εργασιών"): online trading commission 0.35%, minimum column blank; plus transfer/other expenses and taxes; account maintenance EUR 4/quarter (portfolio EUR 100-10,000), EUR 5/quarter (10,001-50,000), EUR 6/quarter above. Third-party costs modelled at the standard ATHEX set (0.0625% + EUR 0.50).
+as_of: 2026-09-20
+warnings:
+  - UNVERIFIED MINIMUM - the published price list does not state a minimum commission per order; modelled as none. A hidden minimum would change this profile's ranking at the EUR 1,000 book size entirely. Confirm with the broker before relying on it.
+badge: UNVERIFIED MINIMUM
+commission_fixed_eur: 0.0
+handling_fixed_eur: 0.0
+commission_pct_tiers:
+  - up_to: null
+    pct: 0.0035
+commission_per_share_eur: 0.0
+commission_min_eur: 0.0
+exchange_pct: 0.000625
+exchange_fixed_eur: 0.50
+sales_tax_pct: 0.001
+account_fee_tiers:
+  - nav_up_to: 10000
+    per_quarter_eur: 4.00
+  - nav_up_to: 50000
+    per_quarter_eur: 5.00
+  - nav_up_to: null
+    per_quarter_eur: 6.00

@@ -1,0 +1,11 @@
+id: base
+target_positions: 4
+max_positions: 5
+max_weight: 0.30
+min_weight: 0.15
+min_hold_trading_days: 30
+max_orders_per_month: 2
+max_turnover_pct_month: 0.25     # one-sided: (buys + sells) / 2 over the calendar month, as a fraction of NAV
+stop_loss_pct: 0.15              # vs cost, evaluated at close, sold at next open; exempt from hold and order cap
+buildup_trading_days: 5          # first N trading days of a cohort: up to max_positions buys, turnover cap waived
+max_adv_fraction: 0.01           # an order may not exceed this fraction of 20-day average daily EUR volume

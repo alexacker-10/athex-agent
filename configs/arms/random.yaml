@@ -1,0 +1,18 @@
+id: random
+description: Random picker under identical constraints; trade rate matched to arm A's trailing realized rate; many seeds.
+kind: rule
+base_arm: null
+factor: []
+rule:
+  kind: random
+  params:
+    n_seeds: 200
+    match_trade_rate_of: A
+    trailing_days: 60
+sources: {prices: true, official: false, news: false, macro: false, rumors: false}
+universe: base
+limits: base
+books: ["10k", "1k"]
+seed: 12345
+cohort_start: null
+active: true

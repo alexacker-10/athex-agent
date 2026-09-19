@@ -1,0 +1,17 @@
+id: momentum
+description: 6-1 month momentum, top-4 equal weight, at most one swap per month (weakest holding vs strongest candidate).
+kind: rule
+base_arm: null
+factor: []
+rule:
+  kind: momentum
+  params:
+    lookback_days: 126
+    skip_days: 21
+sources: {prices: true, official: false, news: false, macro: false, rumors: false}
+universe: base
+limits: base
+books: ["10k", "1k"]
+seed: 0
+cohort_start: null
+active: true
