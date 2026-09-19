@@ -23,7 +23,7 @@ from athex_agent.portfolio.accounting import BookState, DivergenceKind
 from athex_agent.portfolio.fees import compute_fees
 from athex_agent.portfolio.money import round_cents
 from athex_agent.portfolio.orders import Order
-from athex_agent.portfolio.slippage import OrderRefused, slippage_fraction
+from athex_agent.portfolio.slippage import OrderRefused, max_order_value, slippage_fraction
 
 
 @dataclass
@@ -210,7 +210,7 @@ class RulesLayer:
                 if math.isnan(adv) or adv <= 0:
                     block(t, "LIQUIDITY_REFUSED", str(exc), intended)
                     continue
-                target = round_cents(lim.max_adv_fraction * adv)
+                target = max_order_value(ctx.slippage, adv)
                 frac = slippage_fraction(ctx.slippage, target, adv)
             per_share = price * (1.0 + frac)
             affordable = min(target, led.cash)

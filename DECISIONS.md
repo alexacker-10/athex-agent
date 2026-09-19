@@ -32,3 +32,17 @@ records why. Entries are append-only.
 - The monthly fee budget (1.5% of NAV per book) is waived during the build-up window, like the order
   and turnover caps: four DEGIRO orders cost 1.96% of a EUR 1,000 book, so the personal book could
   never deploy otherwise. The stop-loss remains exempt from the hold period and order cap only.
+
+## 2026-09-20 — Build complete; pre-registration written; data bootstrapped
+- PREREGISTRATION.md written before any live run (criteria per DESIGN.md §10 with the two-book
+  framing; blank line for the personal-book broker profile to be named before go-live).
+- Price history bootstrapped from Yahoo Finance for 50 tickers (universe candidates, aliases,
+  AETF.AT, SXR8.DE, GD.AT, EURUSD=X) into data/prices and data/actions; 0 failures.
+- Live source check (2026-09-20): 18 of 20 configured sources work; the ATHEX company-announcements
+  page and newmoney.gr are disallowed by their robots.txt for our user agent and are skipped
+  automatically. Consequence: arm C ("official announcements + prices") currently sees prices only,
+  which the dashboard flags via the source-health panel. Finding an official feed that permits
+  crawling is an open item; until then C measures "prices only".
+- Dry runs replay past sessions with a simulated clock (`--simulate-clock`, dry-run only) because
+  the lookahead guard correctly refuses orders decided after a session's open. Dry-run state lives
+  under .cache/dryrun and the dashboard shows a DRY RUN banner.

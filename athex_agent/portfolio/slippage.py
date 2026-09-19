@@ -34,3 +34,13 @@ def fill_price(
     frac = slippage_fraction(cfg, order_value_eur, adv_eur)
     sign = 1.0 if side == "BUY" else -1.0
     return round_price(reference_price * (1.0 + sign * frac)), frac
+
+
+def max_order_value(cfg: SlippageConfig, adv_eur: float) -> float:
+    """Largest order value (whole cents) that stays within the ADV cap after rounding."""
+    if adv_eur is None or not adv_eur > 0 or math.isnan(adv_eur):
+        raise OrderRefused("no average-daily-volume data for this ticker")
+    value = math.floor(cfg.max_adv_fraction * adv_eur * 100.0) / 100.0
+    while value > 0 and value / adv_eur > cfg.max_adv_fraction:
+        value = round(value - 0.01, 2)
+    return value

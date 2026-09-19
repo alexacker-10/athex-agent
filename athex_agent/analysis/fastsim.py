@@ -20,7 +20,7 @@ from athex_agent.config.models import FeeProfile, RiskLimits, SlippageConfig
 from athex_agent.portfolio.fees import compute_fees
 from athex_agent.portfolio.money import round_cents, round_price
 from athex_agent.portfolio.rules import RulesLayer
-from athex_agent.portfolio.slippage import OrderRefused, slippage_fraction
+from athex_agent.portfolio.slippage import OrderRefused, max_order_value, slippage_fraction
 
 MAX_PENDING_SESSIONS = 3
 
@@ -418,7 +418,7 @@ def _decide(
             if math.isnan(adv) or adv <= 0:
                 book.n_blocked += 1
                 continue
-            target = round_cents(lim.max_adv_fraction * adv)
+            target = max_order_value(book.params.slippage, adv)
             frac = slippage_fraction(book.params.slippage, target, adv)
         per_share = price * (1.0 + frac)
         shares = RulesLayer._size(book.params.fee_profile, min(target, cash), per_share)

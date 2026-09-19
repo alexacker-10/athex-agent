@@ -244,3 +244,57 @@ def test_quote_dataclass_is_frozen():
     q = Quote("ETE.AT", 17.5, 17.4, 17.3, 17.6, 17.2, 1.0, datetime.now(UTC))
     with pytest.raises(dataclasses.FrozenInstanceError):
         q.price = 1.0  # type: ignore[misc]
+
+
+def test_decide_isolates_arm_failures_and_reruns_only_missing(tmp_path, small_repo, monkeypatch):
+    universe = ["ETE.AT", "PPC.AT", "MOH.AT", "BELA.AT", "HTO.AT", "ALWN.AT"]
+    env = Env(
+        repo_root=REPO,
+        data_root=tmp_path / "data",
+        state_root=tmp_path / "state",
+        docs_root=tmp_path / "docs",
+        dry_run=True,
+        source=EmptySource(),
+    )
+    synthetic_store(
+        env.data_root / "prices",
+        {
+            **dict.fromkeys(universe, 12.0),
+            "AETF.AT": 60.0,
+            "SXR8.DE": 700.0,
+            "GD.AT": 2600.0,
+            "EURUSD=X": 1.15,
+        },
+        end=date(2026, 10, 9),
+        n=250,
+    )
+    monkeypatch.setattr(
+        jobs_mod,
+        "job_digest",
+        lambda repo, env_, today, uni: Digest(
+            date=today.isoformat(), generated_at=datetime.now(UTC), model="fake"
+        ),
+    )
+    real = jobs_mod._decide_one
+    calls = {"n": 0}
+
+    def flaky(inst, *a, **kw):
+        calls["n"] += 1
+        if inst.key == "momentum" and calls["n"] < 50:
+            raise RuntimeError("synthetic failure")
+        return real(inst, *a, **kw)
+
+    monkeypatch.setattr(jobs_mod, "_decide_one", flaky)
+    d1 = date(2026, 10, 1)
+    env.now = cal.session_close_utc(d1) + timedelta(hours=1)
+    out = run_job("decide", env, as_of=d1, repo=small_repo)
+    assert out["failed_arms"] == ["momentum"] and out["arms"]["A"]["orders"]["10k"] == 4
+    assert env.ledger.status(d1, "decide") == "failed"
+    # re-run: everything already decided is skipped; only momentum is (re)computed
+    calls["n"] = 100
+    out2 = run_job("decide", env, as_of=d1, repo=small_repo)
+    assert out2["failed_arms"] == [] and out2["arms"]["A"] == {"skipped": "already decided"}
+    assert out2["arms"]["momentum"]["orders"]["10k"] >= 1
+    assert env.ledger.status(d1, "decide") == "success"
+    a_dec = env.state_root / "arms" / "A" / "decisions" / "2026-10-01.json"
+    assert a_dec.exists()

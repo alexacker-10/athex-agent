@@ -19,14 +19,32 @@ def main() -> int:
         action="store_true",
         help="no model calls; separate state under .cache/dryrun; labelled on the dashboard",
     )
+    ap.add_argument(
+        "--simulate-clock",
+        action="store_true",
+        help="dry runs only: pretend the job runs at the session's own time so past "
+        "dates can be replayed for plumbing checks (decisions still cannot see "
+        "later data)",
+    )
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args()
+    if args.simulate_clock and not (args.dry_run and args.as_of):
+        ap.error("--simulate-clock requires --dry-run and --as-of")
     logging.basicConfig(
         level=logging.INFO if args.verbose else logging.WARNING,
         format="%(levelname)s %(name)s: %(message)s",
     )
     env = Env.from_args(args.dry_run)
-    out = run_job(args.job, env, date.fromisoformat(args.as_of) if args.as_of else None)
+    as_of = date.fromisoformat(args.as_of) if args.as_of else None
+    if args.simulate_clock and as_of is not None:
+        from datetime import timedelta
+
+        from athex_agent.data import calendar as cal
+
+        env.now = (
+            cal.session_open_utc(as_of) if args.job == "fill" else cal.session_close_utc(as_of)
+        ) + timedelta(hours=1)
+    out = run_job(args.job, env, as_of)
     print(json.dumps(out, indent=2, default=str))
     return 0
 

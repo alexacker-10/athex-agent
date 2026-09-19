@@ -152,7 +152,10 @@ def build_digest(
         + timedelta(days=1)
         - timedelta(hours=cfg.lookback_hours)
     )
-    fresh = [it for it in report.items if it.published is None or it.published >= cutoff]
+    end_of_day = datetime.fromisoformat(day).replace(tzinfo=UTC) + timedelta(days=1)
+    fresh = [
+        it for it in report.items if it.published is None or (cutoff <= it.published < end_of_day)
+    ]
     new = news_store.append(day, fresh)
     deduped, n_dup = dedup(new)
     tagged = matcher.tag(deduped)
@@ -198,6 +201,7 @@ def build_digest(
             warnings.append("LLM digest unavailable; items carry titles only")
     else:
         output = DigestOutput(items=[], macro_summary="", market_summary="")
+        model_used = "no-items"
     universe_set = set(universe)
     items: list[DigestItem] = []
     seen: set[str] = set()

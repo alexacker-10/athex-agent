@@ -319,7 +319,9 @@ per-order notional cap, allow-listed universe, dry-run diff mode.
 - Book-level statistical power is low; view-level scoring is the compensating instrument, and its effective n is
   smaller than the raw view count because daily views on the same name overlap.
 - Yahoo as sole free price feed: lagging bars, rate limits, understated volumes, no delisted names.
-- Official announcements feed may be blocked from CI; arm C could degrade to prices-only.
+- Official announcements: the ATHEX page is disallowed by robots.txt for crawlers (verified 2026-09-20),
+  so arm C currently measures "prices only"; newmoney.gr is likewise disallowed. Both are skipped
+  automatically and shown on the dashboard.
 - Rumor sources are thin (Reddit is small for Greek stocks; X has no free API).
 - GitHub cron can be late by up to ~30 minutes; occasionally skipped under load. Detected and shown, not silent.
 - Replica noise cannot be controlled via temperature on current models.

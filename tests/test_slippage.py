@@ -58,3 +58,15 @@ def test_config_requires_floor_tier():
             impact_coeff=0.0,
             max_adv_fraction=0.01,
         )
+
+
+def test_max_order_value_never_exceeds_the_cap(cfg):
+    from athex_agent.portfolio.slippage import max_order_value
+
+    for adv in (123_456.78, 300_000.0, 999_999.99, 1_234_567.89, 250_000.0):
+        v = max_order_value(cfg, adv)
+        assert v / adv <= cfg.max_adv_fraction + 1e-12
+        slippage_fraction(cfg, v, adv)  # must not raise
+        assert v >= cfg.max_adv_fraction * adv - 0.02
+    with pytest.raises(OrderRefused):
+        max_order_value(cfg, 0)

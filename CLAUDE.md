@@ -112,6 +112,13 @@ Historical study: `python -m athex_agent.analysis.historical --start 2011-01-01 
 9. **Fee profiles are cited and honest.** Unverified terms carry a `badge` (e.g. Piraeus: UNVERIFIED
    MINIMUM) that the dashboard shows verbatim.
 
+## Status (2026-09-20)
+All seven build stages are implemented and tested (see git log). Not yet live: the first `decide`
+run on GitHub Actions starts the arms and sets `state/ledger/first_live.json`. Before that:
+secrets and variables in the GitHub repo, Pages source = GitHub Actions, run `bootstrap` (or use
+the committed data/), run the historical study once. Open items: an official announcements source
+that permits crawling (arm C is prices-only until then); confirm Piraeus online minimum commission.
+
 ## Process
 - DECISIONS.md is append-only and dated. PREREGISTRATION.md is written before the first live run and not
   edited afterwards.

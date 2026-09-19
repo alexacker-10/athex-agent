@@ -241,42 +241,69 @@ def job_decide(repo: ConfigRepo, env: Env, today: date) -> dict[str, Any]:
     p_swap = _a_order_rate(env, today)
     decision_ts = env.clock()
     per_arm: dict[str, Any] = {}
+    failures: list[str] = []
     for inst in instances:
         if inst.start_on > today:
             continue
-        decider = None
-        extra: dict[str, Any] = {}
-        if inst.is_llm:
-            paths = inst.paths(env.state_root)
-            journal = Journal.load(paths.journal, inst.arm_id)
-            decider = LLMDecider(
-                llm,
-                inst.resolved.arm.llm,
-                inst.resolved.arm.sources,
-                digest,
-                journal,
-                view_scores=_view_scores(inst, env, universe, today),
+        paths = inst.paths(env.state_root)
+        if paths.decision(today).exists():
+            per_arm[inst.key] = {"skipped": "already decided"}
+            continue
+        try:
+            per_arm[inst.key] = _decide_one(
+                inst, env, today, decision_ts, universe, digest, llm, allowed, p_swap
             )
-            if not allowed.get(inst.key, False):
-                extra["budget_shed"] = True
-        elif inst.resolved.arm.rule and inst.resolved.arm.rule.kind == "random":
-            extra["p_swap"] = p_swap
-        runner = _runner(inst, env, decider)
-        if not runner.started():
-            runner.start(today)
-        if extra.get("budget_shed"):
-            rec = runner.decide_hold(today, decision_ts, universe, "budget-shed")
-        else:
-            rec = runner.decide(today, decision_ts, universe, extra)
-        runner.record_nav(today)
-        per_arm[inst.key] = {
-            "orders": {b: len(v["orders"]) for b, v in rec["books"].items()},
-            "hold_reason": rec["proposal"].get("meta", {}).get("hold_reason"),
-            "cost_eur": rec["proposal"].get("meta", {}).get("cost", {}).get("eur", 0.0),
-        }
+        except Exception as exc:  # noqa: BLE001 - isolate one arm's failure from the others
+            log.exception("arm %s failed on %s", inst.key, today)
+            per_arm[inst.key] = {"error": f"{type(exc).__name__}: {str(exc)[:300]}"}
+            failures.append(inst.key)
+    summary["failed_arms"] = failures
     summary["arms"] = per_arm
     summary["llm_spent_month_eur"] = llm.spent_eur(env.clock())
     return summary
+
+
+def _decide_one(
+    inst: ArmInstance,
+    env: Env,
+    today: date,
+    decision_ts: datetime,
+    universe: list[str],
+    digest: Digest,
+    llm: LLMClient,
+    allowed: dict[str, bool],
+    p_swap: float,
+) -> dict[str, Any]:
+    decider = None
+    extra: dict[str, Any] = {}
+    if inst.is_llm:
+        paths = inst.paths(env.state_root)
+        journal = Journal.load(paths.journal, inst.arm_id)
+        decider = LLMDecider(
+            llm,
+            inst.resolved.arm.llm,
+            inst.resolved.arm.sources,
+            digest,
+            journal,
+            view_scores=_view_scores(inst, env, universe, today),
+        )
+        if not allowed.get(inst.key, False):
+            extra["budget_shed"] = True
+    elif inst.resolved.arm.rule and inst.resolved.arm.rule.kind == "random":
+        extra["p_swap"] = p_swap
+    runner = _runner(inst, env, decider)
+    if not runner.started():
+        runner.start(today)
+    if extra.get("budget_shed"):
+        rec = runner.decide_hold(today, decision_ts, universe, "budget-shed")
+    else:
+        rec = runner.decide(today, decision_ts, universe, extra)
+    runner.record_nav(today)
+    return {
+        "orders": {b: len(v["orders"]) for b, v in rec["books"].items()},
+        "hold_reason": rec["proposal"].get("meta", {}).get("hold_reason"),
+        "cost_eur": rec["proposal"].get("meta", {}).get("cost", {}).get("eur", 0.0),
+    }
 
 
 def job_bootstrap(repo: ConfigRepo, env: Env, today: date) -> dict[str, Any]:
@@ -326,7 +353,12 @@ def run_job(
     except Exception as exc:
         ledger.finish(today, job, "failed", f"{type(exc).__name__}: {exc}")
         raise
-    ledger.finish(today, job, "success", str(out)[:1500])
+    if job == "decide" and out.get("failed_arms"):
+        ledger.finish(
+            today, job, "failed", f"arms failed: {out['failed_arms']}; re-run to complete"
+        )
+    else:
+        ledger.finish(today, job, "success", str(out)[:1500])
     if job == "decide":
         from athex_agent.dashboard.build import build_dashboard
 
