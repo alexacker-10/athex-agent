@@ -8,8 +8,8 @@ rule:
   params:
     ticker: AETF.AT
 sources: {prices: true, official: false, news: false, macro: false, rumors: false}
-universe: base
-limits: base
+universe: rule
+limits: buy_hold
 books: ["10k", "1k"]
 seed: 0
 cohort_start: null

@@ -22,3 +22,13 @@ records why. Entries are append-only.
   as a divergence (FEE_ECONOMICS_EXCLUSION) and surfaced; a silently different universe would break the comparison.
 - Pre-registered possible outcome: edge at 5 days but none at 20/30 means the approach does not fit a
   fee-constrained small account.
+
+## 2026-09-20 — Build clarifications (stage 3, before any live run)
+- Turnover is measured as replacement churn, min(buys, sells) / NAV per calendar month, not
+  (buys + sells) / 2. Reason: with (buys + sells) / 2 any single swap whose sold position had drifted
+  above 25% of NAV would breach a 25% cap, blocking roughly half of all legitimate swaps; min(buys, sells)
+  caps exactly the replacement activity the rule is meant to limit (one 25% swap per month), while
+  build-up buys and pure de-risking sells are governed by the order cap and hold period instead.
+- The monthly fee budget (1.5% of NAV per book) is waived during the build-up window, like the order
+  and turnover caps: four DEGIRO orders cost 1.96% of a EUR 1,000 book, so the personal book could
+  never deploy otherwise. The stop-loss remains exempt from the hold period and order cap only.

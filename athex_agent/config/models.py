@@ -106,6 +106,7 @@ class RiskLimits(StrictModel):
     stop_loss_pct: float = Field(ge=0, le=1)
     buildup_trading_days: int = Field(ge=0)
     max_adv_fraction: float = Field(gt=0, le=1)
+    max_fee_pct_per_order: float = Field(default=0.04, gt=0, le=0.5)
 
     @model_validator(mode="after")
     def _coherent(self) -> RiskLimits:
@@ -185,7 +186,7 @@ class ArmConfig(StrictModel):
     llm: LLMSettings | None = None
     rule: RuleParams | None = None
     sources: SourceToggles = SourceToggles()
-    universe: str = "base"
+    universe: str = "base"  # a universe id, or "rule" when the decider defines the tradable set
     limits: str = "base"
     books: list[str] = ["10k", "1k"]
     fee_profile_override: str | None = None

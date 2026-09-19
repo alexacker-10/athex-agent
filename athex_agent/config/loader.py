@@ -118,7 +118,7 @@ class ConfigRepo:
         if unknown:
             raise ConfigError(f"arm {arm_id}: unknown fee profiles {unknown}")
         universe = self.universe()
-        if arm.universe != universe.id:
+        if arm.universe != universe.id and not (arm.kind == "rule" and arm.universe == "rule"):
             raise ConfigError(f"arm {arm_id}: unknown universe '{arm.universe}'")
         if arm.base_arm is not None:
             base = self.arm(arm.base_arm)

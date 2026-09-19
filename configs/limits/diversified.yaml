@@ -1,0 +1,13 @@
+# Diagnostic only: an equal-weight universe book needs many small positions and frequent orders.
+id: diversified
+target_positions: 30
+max_positions: 60
+max_weight: 0.10
+min_weight: 0.0
+min_hold_trading_days: 0
+max_orders_per_month: 120
+max_turnover_pct_month: 1.0
+stop_loss_pct: 1.0
+buildup_trading_days: 5
+max_adv_fraction: 0.01
+max_fee_pct_per_order: 0.04

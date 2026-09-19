@@ -1,0 +1,12 @@
+id: buy_hold
+target_positions: 1
+max_positions: 1
+max_weight: 1.0
+min_weight: 0.0
+min_hold_trading_days: 0
+max_orders_per_month: 1
+max_turnover_pct_month: 1.0
+stop_loss_pct: 1.0               # never triggers: a buy-and-hold benchmark does not stop out
+buildup_trading_days: 5
+max_adv_fraction: 0.01
+max_fee_pct_per_order: 0.04

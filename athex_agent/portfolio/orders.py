@@ -46,6 +46,8 @@ class Fill(StrictModel):
     ticker: str
     side: Side
     shares: int = Field(gt=0)
+    decision_date: date
+    decision_ts: datetime
     fill_date: date
     open_price: float = Field(gt=0)  # the session's opening-auction price
     slippage_pct: float = Field(ge=0)
@@ -64,13 +66,16 @@ class Fill(StrictModel):
 def make_fill(
     order: Order,
     fill_date: date,
+    *,
+    shares: int | None = None,
     open_price: float,
     fill_price: float,
     slippage_pct: float,
     fees: FeeBreakdown,
     fill_ts: datetime,
 ) -> Fill:
-    gross = round_cents(order.shares * fill_price)
+    n = order.shares if shares is None else shares
+    gross = round_cents(n * fill_price)
     delta = -(gross + fees.total) if order.side == "BUY" else gross - fees.total
     return Fill(
         order_id=order.order_id,
@@ -78,7 +83,9 @@ def make_fill(
         book_id=order.book_id,
         ticker=order.ticker,
         side=order.side,
-        shares=order.shares,
+        shares=n,
+        decision_date=order.decision_date,
+        decision_ts=order.decision_ts,
         fill_date=fill_date,
         open_price=open_price,
         slippage_pct=slippage_pct,

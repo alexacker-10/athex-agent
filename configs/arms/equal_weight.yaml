@@ -9,7 +9,7 @@ rule:
     rebalance_months: 3
 sources: {prices: true, official: false, news: false, macro: false, rumors: false}
 universe: base
-limits: base
+limits: diversified
 books: ["10k", "1k"]
 seed: 0
 cohort_start: null

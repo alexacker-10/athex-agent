@@ -228,8 +228,8 @@ day of each month; ids like `A@2026-11`. Other LLM arms get cohorts only if budg
 | Min order | EUR 150 per book (final sells exempt); below it: skip or shrink, logged as divergence | binds only the EUR 1k book |
 | Min holding | **30 trading days** | hard stop-loss exempt |
 | Order cap | **<= 2 orders per calendar month** (one swap) | build-up exemption: first 5 trading days of a cohort allow up to max_positions buys |
-| Turnover | **<= 25% of NAV per calendar month, one-sided** = (buys + sells)/2 | waived during build-up |
-| Fee budget | **<= 1.5% of NAV per calendar month, per book**; breaching orders rejected and logged | calibrated so two DEGIRO orders fit at EUR 1k (EUR 10.05 vs EUR 15) |
+| Turnover | **<= 25% of NAV per calendar month**, measured as replacement churn min(buys, sells)/NAV (see DECISIONS.md 2026-09-20 build clarifications) | waived during build-up |
+| Fee budget | **<= 1.5% of NAV per calendar month, per book**; breaching orders rejected and logged; waived during build-up | calibrated so two DEGIRO orders fit at EUR 1k (EUR 10.05 vs EUR 15) |
 | Hard stop-loss | -15% vs cost at close, sold next open; exempt from min hold and order cap; counts toward turnover and fee budget | tail protection |
 | Liquidity | order <= 1% of 20-day ADV; universe floor EUR 300k ADV | binding for EUR 2,500 orders at the floor |
 | LLM failure | invalid output -> retry once -> hold | spec |

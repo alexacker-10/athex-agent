@@ -5,7 +5,8 @@ max_weight: 0.30
 min_weight: 0.15
 min_hold_trading_days: 30
 max_orders_per_month: 2
-max_turnover_pct_month: 0.25     # one-sided: (buys + sells) / 2 over the calendar month, as a fraction of NAV
+max_turnover_pct_month: 0.25     # replacement churn: min(buys, sells) over the calendar month / NAV
 stop_loss_pct: 0.15              # vs cost, evaluated at close, sold at next open; exempt from hold and order cap
 buildup_trading_days: 5          # first N trading days of a cohort: up to max_positions buys, turnover cap waived
 max_adv_fraction: 0.01           # an order may not exceed this fraction of 20-day average daily EUR volume
+max_fee_pct_per_order: 0.04      # buy fee above this share of the order value = fee-economics exclusion (logged)

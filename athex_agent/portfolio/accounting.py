@@ -16,7 +16,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from athex_agent.portfolio.money import round_cents
-from athex_agent.portfolio.orders import Fill
+from athex_agent.portfolio.orders import Fill, Order
 from athex_agent.portfolio.types import Side
 
 
@@ -88,6 +88,12 @@ class CashEvent(_Mutable):
 
 
 DivergenceKind = Literal[
+    "STOP_LOSS_FORCED",
+    "HOLD_PERIOD_BLOCK",
+    "ORDER_CAP_BLOCK",
+    "POSITION_CAP_BLOCK",
+    "NOT_IN_UNIVERSE",
+    "ORDER_STALE_CANCELLED",
     "ORDER_SKIPPED_MIN_SIZE",
     "ORDER_SHRUNK_CASH",
     "FEE_ECONOMICS_EXCLUSION",
@@ -109,11 +115,18 @@ class Divergence(_Mutable):
     actual_shares: int = Field(ge=0)
 
 
+class CancelledOrder(_Mutable):
+    order: Order
+    reason: str
+    on: date
+
+
 class TradeRecord(_Mutable):
     order_id: str
     ticker: str
     side: Side
     shares: int
+    decision_date: date
     fill_date: date
     open_price: float
     fill_price: float
@@ -135,6 +148,8 @@ class BookState(_Mutable):
     started_on: date
     cash_eur: float
     positions: dict[str, Position] = {}
+    pending_orders: list[Order] = []
+    cancelled_orders: list[CancelledOrder] = []
     trades: list[TradeRecord] = []
     cash_events: list[CashEvent] = []
     divergences: list[Divergence] = []
@@ -221,6 +236,7 @@ class BookState(_Mutable):
             ticker=fill.ticker,
             side=fill.side,
             shares=fill.shares,
+            decision_date=fill.decision_date,
             fill_date=fill.fill_date,
             open_price=fill.open_price,
             fill_price=fill.fill_price,
@@ -363,6 +379,64 @@ class BookState(_Mutable):
         )
         self.divergences.append(d)
         return d
+
+    # ---- order bookkeeping
+    def add_pending(self, order: Order) -> None:
+        if any(o.order_id == order.order_id for o in self.pending_orders):
+            raise AccountingError(f"duplicate order id {order.order_id}")
+        self.pending_orders.append(order)
+
+    def remove_pending(self, order_id: str) -> Order:
+        for i, o in enumerate(self.pending_orders):
+            if o.order_id == order_id:
+                return self.pending_orders.pop(i)
+        raise AccountingError(f"no pending order {order_id}")
+
+    def cancel_pending(self, order_id: str, reason: str, on: date) -> CancelledOrder:
+        c = CancelledOrder(order=self.remove_pending(order_id), reason=reason, on=on)
+        self.cancelled_orders.append(c)
+        return c
+
+    def trades_in_month(self, year: int, month: int) -> list[TradeRecord]:
+        return [
+            t
+            for t in self.trades
+            if t.decision_date.year == year and t.decision_date.month == month
+        ]
+
+    def pending_in_month(self, year: int, month: int) -> list[Order]:
+        return [
+            o
+            for o in self.pending_orders
+            if o.decision_date.year == year and o.decision_date.month == month
+        ]
+
+    def orders_placed_in_month(self, year: int, month: int) -> int:
+        return len(self.trades_in_month(year, month)) + len(self.pending_in_month(year, month))
+
+    def gross_by_side_in_month(self, year: int, month: int) -> tuple[float, float]:
+        """(buys, sells) gross value this month: filled at fill price, pending at reference."""
+        buys = sells = 0.0
+        for t in self.trades_in_month(year, month):
+            if t.side == "BUY":
+                buys += t.gross_value
+            else:
+                sells += t.gross_value
+        for o in self.pending_in_month(year, month):
+            if o.side == "BUY":
+                buys += o.reference_value
+            else:
+                sells += o.reference_value
+        return round_cents(buys), round_cents(sells)
+
+    def fees_in_month(self, year: int, month: int) -> float:
+        """Fees and sales duty already paid on this month's decisions (pending orders excluded)."""
+        return round_cents(
+            sum(
+                t.commission + t.handling + t.exchange + t.sales_tax
+                for t in self.trades_in_month(year, month)
+            )
+        )
 
     # ---- summary metrics
     def total_costs(self) -> dict[str, float]:
