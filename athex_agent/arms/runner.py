@@ -22,6 +22,8 @@ from pathlib import Path
 from typing import Any
 
 from athex_agent.arms.deciders import Decider, DecisionInputs, make_decider
+from athex_agent.arms.journal import ClosedTrade, Journal
+from athex_agent.arms.llm_decider import apply_journal_updates
 from athex_agent.config.freeze import assert_frozen, write_lock
 from athex_agent.config.models import BookConfig, ResolvedArm
 from athex_agent.data import calendar as cal
@@ -64,6 +66,13 @@ class ArmPaths:
 
     def views(self, d: date) -> Path:
         return self.root / "views" / f"{d.isoformat()}.json"
+
+    def prompt(self, d: date) -> Path:
+        return self.root / "decisions" / f"{d.isoformat()}.prompt.json"
+
+    @property
+    def journal(self) -> Path:
+        return self.root / "journal.json"
 
 
 class NotStarted(RuntimeError):
@@ -130,7 +139,51 @@ class ArmRunner:
             profile = self.resolved.fee_profile_for(self.book_cfg(book_id))
             out[book_id] = engine.process(book, profile, adv, now_utc, committed_ts, today)
         self.save_books(books)
+        self._record_closed_trades(out, books)
         return out
+
+    def _journal(self) -> Journal:
+        """The arm's journal: the decider's live object when it holds one, else from disk."""
+        j = getattr(self.decider, "journal", None)
+        if isinstance(j, Journal):
+            return j
+        return Journal.load(self.paths.journal, self.arm.id)
+
+    def _record_closed_trades(self, outcomes, books) -> None:
+        """Fully closed positions of the primary book become journal entries (LLM arms)."""
+        if self.arm.kind != "llm":
+            return
+        primary = next((b.id for b in self.resolved.books if b.primary), self.resolved.books[0].id)
+        book = books[primary]
+        journal = self._journal()
+        changed = False
+        for o in outcomes.get(primary, []):
+            if o.status != "filled" or o.fill is None or o.fill.side != "SELL":
+                continue
+            if book.shares(o.fill.ticker) != 0:
+                continue
+            rec = next((t for t in reversed(book.trades) if t.order_id == o.order.order_id), None)
+            buys = [
+                t
+                for t in book.trades
+                if t.ticker == o.fill.ticker and t.side == "BUY" and t.fill_date <= o.fill.fill_date
+            ]
+            if rec is None or not buys or not rec.cost_basis_sold:
+                continue
+            opened = buys[-1].fill_date
+            journal.add_closed_trade(
+                ClosedTrade(
+                    ticker=o.fill.ticker,
+                    opened=opened,
+                    closed=o.fill.fill_date,
+                    return_pct=round((rec.realized_pnl or 0.0) / rec.cost_basis_sold, 4),
+                    hold_trading_days=cal.trading_days_between(opened, o.fill.fill_date),
+                    reason=o.order.reason[:200],
+                )
+            )
+            changed = True
+        if changed:
+            journal.save(self.paths.journal)
 
     def apply_corporate_actions(self, upto: date) -> dict[str, int]:
         books = self.load_books()
@@ -219,6 +272,19 @@ class ArmRunner:
                 "blocked": res.blocked,
             }
         self.save_books(books)
+        if getattr(self.decider, "last_prompt", None) is not None:
+            self._write_json(
+                self.paths.prompt(decision_date),
+                {
+                    "system_prompt_version": getattr(self.decider, "prompt_version", None),
+                    "user_payload": self.decider.last_prompt,
+                    "raw_output": getattr(self.decider, "last_raw", None),
+                },
+            )
+        if self.arm.kind == "llm":
+            journal = self._journal()
+            apply_journal_updates(journal, proposal, decision_date, set(universe_members))
+            journal.save(self.paths.journal)
         self._write_json(self.paths.decision(decision_date), record)
         self._write_json(
             self.paths.views(decision_date),
