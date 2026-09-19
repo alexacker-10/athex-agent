@@ -1,0 +1,195 @@
+{
+ "key": "bh_sp500",
+ "books": {
+  "10k": {
+   "trades": [
+    {
+     "order_id": "bh_sp500:10k:2026-09-10:01:BUY:SXR8.DE",
+     "ticker": "SXR8.DE",
+     "side": "BUY",
+     "shares": 14,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 708.679993,
+     "fill_price": 709.406,
+     "gross_value": 9931.68,
+     "commission": 0.0,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 10.16,
+     "cash_delta": -9932.68,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  },
+  "1k": {
+   "trades": [
+    {
+     "order_id": "bh_sp500:1k:2026-09-10:01:BUY:SXR8.DE",
+     "ticker": "SXR8.DE",
+     "side": "BUY",
+     "shares": 1,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 708.679993,
+     "fill_price": 709.3933,
+     "gross_value": 709.39,
+     "commission": 0.0,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.71,
+     "cash_delta": -710.39,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  }
+ },
+ "decisions": [
+  {
+   "date": "2026-09-10",
+   "regime_note": "",
+   "actions": [
+    {
+     "kind": "buy",
+     "reason": "buy-and-hold benchmark",
+     "ticker": "SXR8.DE",
+     "weight": 1.0
+    }
+   ],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [
+      "BUY 14 SXR8.DE"
+     ],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [
+      "BUY 1 SXR8.DE"
+     ],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-10.prompt.json"
+  },
+  {
+   "date": "2026-09-11",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-11.prompt.json"
+  },
+  {
+   "date": "2026-09-14",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-14.prompt.json"
+  },
+  {
+   "date": "2026-09-15",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-15.prompt.json"
+  },
+  {
+   "date": "2026-09-16",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-16.prompt.json"
+  },
+  {
+   "date": "2026-09-17",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-17.prompt.json"
+  },
+  {
+   "date": "2026-09-18",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_sp500/decisions/2026-09-18.prompt.json"
+  }
+ ],
+ "items": {}
+}

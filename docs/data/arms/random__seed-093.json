@@ -1,0 +1,1115 @@
+{
+ "key": "random@seed-093",
+ "books": {
+  "10k": {
+   "trades": [
+    {
+     "order_id": "random:10k:2026-09-10:01:BUY:AEM.AT",
+     "ticker": "AEM.AT",
+     "side": "BUY",
+     "shares": 391,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.34,
+     "fill_price": 6.3784,
+     "gross_value": 2493.95,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 15.01,
+     "cash_delta": -2498.85,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "random:10k:2026-09-10:02:BUY:CENER.AT",
+     "ticker": "CENER.AT",
+     "side": "BUY",
+     "shares": 107,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 23.48,
+     "fill_price": 23.5393,
+     "gross_value": 2518.71,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 6.35,
+     "cash_delta": -2523.61,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "random:10k:2026-09-10:03:BUY:LAMDA.AT",
+     "ticker": "LAMDA.AT",
+     "side": "BUY",
+     "shares": 373,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.71,
+     "fill_price": 6.7271,
+     "gross_value": 2509.21,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 6.38,
+     "cash_delta": -2514.11,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "random:10k:2026-09-10:04:BUY:OPTIMA.AT",
+     "ticker": "OPTIMA.AT",
+     "side": "BUY",
+     "shares": 191,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 12.79,
+     "fill_price": 12.8223,
+     "gross_value": 2449.06,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 6.17,
+     "cash_delta": -2453.96,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [
+    {
+     "date": "2026-09-11",
+     "ticker": "OPTIMA.AT",
+     "kind": "ORDER_SHRUNK_CASH",
+     "detail": "open 12.7900 above reference 12.7600",
+     "intended_shares": 195,
+     "actual_shares": 191
+    },
+    {
+     "date": "2026-09-18",
+     "ticker": "OPTIMA.AT",
+     "kind": "HOLD_PERIOD_BLOCK",
+     "detail": "held 5 < 30 trading days",
+     "intended_shares": 191,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-18",
+     "ticker": "ADMIE.AT",
+     "kind": "ORDER_CAP_BLOCK",
+     "detail": "4 orders already this month (cap 2)",
+     "intended_shares": 0,
+     "actual_shares": 0
+    }
+   ],
+   "cancelled": []
+  },
+  "1k": {
+   "trades": [
+    {
+     "order_id": "random:1k:2026-09-10:01:BUY:AEM.AT",
+     "ticker": "AEM.AT",
+     "side": "BUY",
+     "shares": 38,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.34,
+     "fill_price": 6.3782,
+     "gross_value": 242.37,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.45,
+     "cash_delta": -247.27,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "random:1k:2026-09-10:02:BUY:CENER.AT",
+     "ticker": "CENER.AT",
+     "side": "BUY",
+     "shares": 10,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 23.48,
+     "fill_price": 23.5389,
+     "gross_value": 235.39,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.59,
+     "cash_delta": -240.29,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "random:1k:2026-09-10:03:BUY:LAMDA.AT",
+     "ticker": "LAMDA.AT",
+     "side": "BUY",
+     "shares": 36,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.71,
+     "fill_price": 6.7269,
+     "gross_value": 242.17,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.61,
+     "cash_delta": -247.07,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "random:1k:2026-09-10:04:BUY:OPTIMA.AT",
+     "ticker": "OPTIMA.AT",
+     "side": "BUY",
+     "shares": 19,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 12.79,
+     "fill_price": 12.8221,
+     "gross_value": 243.62,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.61,
+     "cash_delta": -248.52,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [
+    {
+     "date": "2026-09-18",
+     "ticker": "OPTIMA.AT",
+     "kind": "HOLD_PERIOD_BLOCK",
+     "detail": "held 5 < 30 trading days",
+     "intended_shares": 19,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-18",
+     "ticker": "ADMIE.AT",
+     "kind": "ORDER_CAP_BLOCK",
+     "detail": "4 orders already this month (cap 2)",
+     "intended_shares": 0,
+     "actual_shares": 0
+    }
+   ],
+   "cancelled": []
+  }
+ },
+ "decisions": [
+  {
+   "date": "2026-09-10",
+   "regime_note": "",
+   "actions": [
+    {
+     "kind": "buy",
+     "reason": "random build-up",
+     "ticker": "AEM.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "random build-up",
+     "ticker": "CENER.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "random build-up",
+     "ticker": "LAMDA.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "random build-up",
+     "ticker": "OPTIMA.AT",
+     "weight": null
+    }
+   ],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.31,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "KRI.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.62,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "HTO.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.43,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "OPTIMA.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.77,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "EUROB.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.2,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "TITC.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.24,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "CENER.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.67,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ADMIE.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.88,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "BYLOT.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.29,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "PPC.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.22,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AIA.AT",
+     "view": "strong_sell"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [
+      "BUY 391 AEM.AT",
+      "BUY 107 CENER.AT",
+      "BUY 373 LAMDA.AT",
+      "BUY 195 OPTIMA.AT"
+     ],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [
+      "BUY 38 AEM.AT",
+      "BUY 10 CENER.AT",
+      "BUY 36 LAMDA.AT",
+      "BUY 19 OPTIMA.AT"
+     ],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-10.prompt.json"
+  },
+  {
+   "date": "2026-09-11",
+   "regime_note": "",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.25,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "CENER.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.67,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "EUROB.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.65,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AVAX.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.44,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "EYDAP.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.82,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "CREDIA.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.27,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "PPC.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.85,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "KRI.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.33,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "MOH.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.33,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "HTO.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.37,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ELPE.AT",
+     "view": "strong_buy"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-11.prompt.json"
+  },
+  {
+   "date": "2026-09-14",
+   "regime_note": "",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.31,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AEGN.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.32,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ALPHA.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.24,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "LAMDA.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.89,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AVAX.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.53,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "EYDAP.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.26,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AEM.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.48,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AIA.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.26,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ELPE.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.57,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "MOH.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.67,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ELHA.AT",
+     "view": "strong_sell"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-14.prompt.json"
+  },
+  {
+   "date": "2026-09-15",
+   "regime_note": "",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.73,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AIA.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.51,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "GEKTERNA.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.55,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "EUROB.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.81,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "CREDIA.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.43,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ALPHA.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.28,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.76,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "TPEIR.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.3,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "PPC.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.86,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.79,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "EYDAP.AT",
+     "view": "strong_buy"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-15.prompt.json"
+  },
+  {
+   "date": "2026-09-16",
+   "regime_note": "",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.32,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "MTLN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.67,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "PROF.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.44,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ALWN.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.4,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "OPTIMA.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.51,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AVAX.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.43,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "BOCHGR.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.55,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "HTO.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.47,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ELPE.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.8,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AEM.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.74,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "KRI.AT",
+     "view": "strong_buy"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-16.prompt.json"
+  },
+  {
+   "date": "2026-09-17",
+   "regime_note": "",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.46,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "BOCHGR.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.39,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "SAR.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.58,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.69,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.51,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "GEKTERNA.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.37,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AETF.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.45,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AIA.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.35,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ELPE.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.32,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "BELA.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.73,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ELHA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-17.prompt.json"
+  },
+  {
+   "date": "2026-09-18",
+   "regime_note": "",
+   "actions": [
+    {
+     "kind": "sell",
+     "reason": "random swap",
+     "ticker": "OPTIMA.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "random swap",
+     "ticker": "ADMIE.AT",
+     "weight": null
+    }
+   ],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.52,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.26,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ETE.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.84,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "ADMIE.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.25,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "CREDIA.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.67,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "BOCHGR.AT",
+     "view": "strong_sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.84,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "KRI.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.72,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "AVAX.AT",
+     "view": "strong_buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.51,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "TITC.AT",
+     "view": "sell"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.22,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "PROF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.43,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "random null view",
+     "ticker": "LAMDA.AT",
+     "view": "strong_buy"
+    }
+   ],
+   "meta": {
+    "p_swap": 0.047619047619047616
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": [
+      "OPTIMA.AT HOLD_PERIOD_BLOCK: held 5 < 30 trading days",
+      "ADMIE.AT ORDER_CAP_BLOCK: 4 orders already this month (cap 2)"
+     ]
+    },
+    "1k": {
+     "orders": [],
+     "blocked": [
+      "OPTIMA.AT HOLD_PERIOD_BLOCK: held 5 < 30 trading days",
+      "ADMIE.AT ORDER_CAP_BLOCK: 4 orders already this month (cap 2)"
+     ]
+    }
+   },
+   "prompt_file": "state/arms/random/instances/seed-093/decisions/2026-09-18.prompt.json"
+  }
+ ],
+ "items": {}
+}

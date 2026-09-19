@@ -1,0 +1,1269 @@
+{
+ "key": "equal_weight",
+ "books": {
+  "10k": {
+   "trades": [
+    {
+     "order_id": "equal_weight:10k:2026-09-10:01:BUY:ADMIE.AT",
+     "ticker": "ADMIE.AT",
+     "side": "BUY",
+     "shares": 68,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 4.47,
+     "fill_price": 4.4812,
+     "gross_value": 304.72,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.76,
+     "cash_delta": -309.62,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:02:BUY:AEGN.AT",
+     "ticker": "AEGN.AT",
+     "side": "BUY",
+     "shares": 26,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 11.6,
+     "fill_price": 11.6698,
+     "gross_value": 303.41,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.81,
+     "cash_delta": -308.31,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:03:BUY:AEM.AT",
+     "ticker": "AEM.AT",
+     "side": "BUY",
+     "shares": 48,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.34,
+     "fill_price": 6.3782,
+     "gross_value": 306.15,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.83,
+     "cash_delta": -311.05,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:04:BUY:AETF.AT",
+     "ticker": "AETF.AT",
+     "side": "BUY",
+     "shares": 4,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 70.040001,
+     "fill_price": 70.7426,
+     "gross_value": 282.97,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 2.81,
+     "cash_delta": -287.87,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:05:BUY:AIA.AT",
+     "ticker": "AIA.AT",
+     "side": "BUY",
+     "shares": 28,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 10.74,
+     "fill_price": 10.8046,
+     "gross_value": 302.53,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.81,
+     "cash_delta": -307.43,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:06:BUY:ALPHA.AT",
+     "ticker": "ALPHA.AT",
+     "side": "BUY",
+     "shares": 64,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 4.8,
+     "fill_price": 4.8048,
+     "gross_value": 307.51,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.31,
+     "cash_delta": -312.41,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:07:BUY:ALWN.AT",
+     "ticker": "ALWN.AT",
+     "side": "BUY",
+     "shares": 23,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 13.22,
+     "fill_price": 13.2333,
+     "gross_value": 304.37,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.31,
+     "cash_delta": -309.27,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:08:BUY:AVAX.AT",
+     "ticker": "AVAX.AT",
+     "side": "BUY",
+     "shares": 91,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 3.4,
+     "fill_price": 3.4086,
+     "gross_value": 310.18,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.78,
+     "cash_delta": -315.08,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:09:BUY:BELA.AT",
+     "ticker": "BELA.AT",
+     "side": "BUY",
+     "shares": 11,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 26.32,
+     "fill_price": 26.3465,
+     "gross_value": 289.81,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.29,
+     "cash_delta": -294.71,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:10:BUY:BOCHGR.AT",
+     "ticker": "BOCHGR.AT",
+     "side": "BUY",
+     "shares": 29,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 10.5,
+     "fill_price": 10.5263,
+     "gross_value": 305.26,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.76,
+     "cash_delta": -310.16,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:11:BUY:BYLOT.AT",
+     "ticker": "BYLOT.AT",
+     "side": "BUY",
+     "shares": 286,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 1.07,
+     "fill_price": 1.0727,
+     "gross_value": 306.79,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.77,
+     "cash_delta": -311.69,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:12:BUY:CENER.AT",
+     "ticker": "CENER.AT",
+     "side": "BUY",
+     "shares": 13,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 23.48,
+     "fill_price": 23.5389,
+     "gross_value": 306.01,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.77,
+     "cash_delta": -310.91,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:13:BUY:CREDIA.AT",
+     "ticker": "CREDIA.AT",
+     "side": "BUY",
+     "shares": 316,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 0.978,
+     "fill_price": 0.9805,
+     "gross_value": 309.84,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.79,
+     "cash_delta": -314.74,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:14:BUY:ELHA.AT",
+     "ticker": "ELHA.AT",
+     "side": "BUY",
+     "shares": 84,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 3.65,
+     "fill_price": 3.6592,
+     "gross_value": 307.37,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.77,
+     "cash_delta": -312.27,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:15:BUY:ELPE.AT",
+     "ticker": "ELPE.AT",
+     "side": "BUY",
+     "shares": 17,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 17.799999,
+     "fill_price": 17.8179,
+     "gross_value": 302.9,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.3,
+     "cash_delta": -307.8,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:16:BUY:ETE.AT",
+     "ticker": "ETE.AT",
+     "side": "BUY",
+     "shares": 17,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 17.709999,
+     "fill_price": 17.7278,
+     "gross_value": 301.37,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.3,
+     "cash_delta": -306.27,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:17:BUY:EUROB.AT",
+     "ticker": "EUROB.AT",
+     "side": "BUY",
+     "shares": 66,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 4.7,
+     "fill_price": 4.7047,
+     "gross_value": 310.51,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.31,
+     "cash_delta": -315.41,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:18:BUY:EYDAP.AT",
+     "ticker": "EYDAP.AT",
+     "side": "BUY",
+     "shares": 25,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 12.0,
+     "fill_price": 12.0722,
+     "gross_value": 301.81,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.81,
+     "cash_delta": -306.71,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:19:BUY:GEKTERNA.AT",
+     "ticker": "GEKTERNA.AT",
+     "side": "BUY",
+     "shares": 6,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 45.200001,
+     "fill_price": 45.2454,
+     "gross_value": 271.47,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.27,
+     "cash_delta": -276.37,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:20:BUY:HTO.AT",
+     "ticker": "HTO.AT",
+     "side": "BUY",
+     "shares": 15,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 19.74,
+     "fill_price": 19.7599,
+     "gross_value": 296.4,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.3,
+     "cash_delta": -301.3,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:21:BUY:INTRK.AT",
+     "ticker": "INTRK.AT",
+     "side": "BUY",
+     "shares": 103,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 2.96,
+     "fill_price": 2.9897,
+     "gross_value": 307.94,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 3.06,
+     "cash_delta": -312.84,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:22:BUY:KRI.AT",
+     "ticker": "KRI.AT",
+     "side": "BUY",
+     "shares": 9,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 30.549999,
+     "fill_price": 30.6269,
+     "gross_value": 275.64,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.69,
+     "cash_delta": -280.54,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:23:BUY:LAMDA.AT",
+     "ticker": "LAMDA.AT",
+     "side": "BUY",
+     "shares": 46,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.71,
+     "fill_price": 6.7269,
+     "gross_value": 309.44,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.78,
+     "cash_delta": -314.34,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:24:BUY:MOH.AT",
+     "ticker": "MOH.AT",
+     "side": "BUY",
+     "shares": 4,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 64.800003,
+     "fill_price": 64.865,
+     "gross_value": 259.46,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.26,
+     "cash_delta": -264.36,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:25:BUY:MTLN.AT",
+     "ticker": "MTLN.AT",
+     "side": "BUY",
+     "shares": 6,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 47.580002,
+     "fill_price": 47.6279,
+     "gross_value": 285.77,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.29,
+     "cash_delta": -290.67,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:26:BUY:OPTIMA.AT",
+     "ticker": "OPTIMA.AT",
+     "side": "BUY",
+     "shares": 24,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 12.79,
+     "fill_price": 12.8221,
+     "gross_value": 307.73,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.77,
+     "cash_delta": -312.63,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:27:BUY:PPC.AT",
+     "ticker": "PPC.AT",
+     "side": "BUY",
+     "shares": 12,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 24.860001,
+     "fill_price": 24.885,
+     "gross_value": 298.62,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.3,
+     "cash_delta": -303.52,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:28:BUY:PROF.AT",
+     "ticker": "PROF.AT",
+     "side": "BUY",
+     "shares": 30,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 9.93,
+     "fill_price": 9.9899,
+     "gross_value": 299.7,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.8,
+     "cash_delta": -304.6,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:29:BUY:SAR.AT",
+     "ticker": "SAR.AT",
+     "side": "BUY",
+     "shares": 24,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 12.4,
+     "fill_price": 12.4747,
+     "gross_value": 299.39,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.79,
+     "cash_delta": -304.29,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:30:BUY:TITC.AT",
+     "ticker": "TITC.AT",
+     "side": "BUY",
+     "shares": 5,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 52.0,
+     "fill_price": 52.1305,
+     "gross_value": 260.65,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.65,
+     "cash_delta": -265.55,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:31:BUY:TPEIR.AT",
+     "ticker": "TPEIR.AT",
+     "side": "BUY",
+     "shares": 29,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 10.62,
+     "fill_price": 10.6307,
+     "gross_value": 308.29,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.31,
+     "cash_delta": -313.19,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "equal_weight:10k:2026-09-10:32:BUY:VIO.AT",
+     "ticker": "VIO.AT",
+     "side": "BUY",
+     "shares": 18,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 16.6,
+     "fill_price": 16.6417,
+     "gross_value": 299.55,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.75,
+     "cash_delta": -304.45,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  },
+  "1k": {
+   "trades": [],
+   "divergences": [
+    {
+     "date": "2026-09-10",
+     "ticker": "ADMIE.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 22.50 < min order 150",
+     "intended_shares": 6,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "AEGN.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 23.20 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "AEM.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 25.36 < min order 150",
+     "intended_shares": 4,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "AETF.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 0.00 < min order 150",
+     "intended_shares": 0,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "AIA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 21.60 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "ALPHA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 23.93 < min order 150",
+     "intended_shares": 6,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "ALWN.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 13.22 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "AVAX.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 23.52 < min order 150",
+     "intended_shares": 9,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "BELA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 26.04 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "BOCHGR.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 21.00 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "BYLOT.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 25.68 < min order 150",
+     "intended_shares": 29,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "CENER.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 23.16 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "CREDIA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 26.16 < min order 150",
+     "intended_shares": 32,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "ELHA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 25.48 < min order 150",
+     "intended_shares": 8,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "ELPE.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 17.80 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "ETE.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 17.34 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "EUROB.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 23.25 < min order 150",
+     "intended_shares": 6,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "EYDAP.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 24.04 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "GEKTERNA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 0.00 < min order 150",
+     "intended_shares": 0,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "HTO.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 19.74 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "INTRK.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 23.52 < min order 150",
+     "intended_shares": 10,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "KRI.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 0.00 < min order 150",
+     "intended_shares": 0,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "LAMDA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 20.01 < min order 150",
+     "intended_shares": 4,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "MOH.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 0.00 < min order 150",
+     "intended_shares": 0,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "MTLN.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 0.00 < min order 150",
+     "intended_shares": 0,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "OPTIMA.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 25.52 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "PPC.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 24.86 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "PROF.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 19.76 < min order 150",
+     "intended_shares": 3,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "SAR.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 24.80 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "TITC.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 0.00 < min order 150",
+     "intended_shares": 0,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "TPEIR.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 21.01 < min order 150",
+     "intended_shares": 2,
+     "actual_shares": 0
+    },
+    {
+     "date": "2026-09-10",
+     "ticker": "VIO.AT",
+     "kind": "ORDER_SKIPPED_MIN_SIZE",
+     "detail": "target 31.25, cash 1000.00, sized 16.76 < min order 150",
+     "intended_shares": 1,
+     "actual_shares": 0
+    }
+   ],
+   "cancelled": []
+  }
+ },
+ "decisions": [
+  {
+   "date": "2026-09-10",
+   "regime_note": "",
+   "actions": [
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "ADMIE.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "AEGN.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "AEM.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "AETF.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "AIA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "ALPHA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "ALWN.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "AVAX.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "BELA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "BOCHGR.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "BYLOT.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "CENER.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "CREDIA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "ELHA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "ELPE.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "ETE.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "EUROB.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "EYDAP.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "GEKTERNA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "HTO.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "INTRK.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "KRI.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "LAMDA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "MOH.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "MTLN.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "OPTIMA.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "PPC.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "PROF.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "SAR.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "TITC.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "TPEIR.AT",
+     "weight": 0.03125
+    },
+    {
+     "kind": "buy",
+     "reason": "equal weight",
+     "ticker": "VIO.AT",
+     "weight": 0.03125
+    }
+   ],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [
+      "BUY 68 ADMIE.AT",
+      "BUY 26 AEGN.AT",
+      "BUY 48 AEM.AT",
+      "BUY 4 AETF.AT",
+      "BUY 28 AIA.AT",
+      "BUY 64 ALPHA.AT",
+      "BUY 23 ALWN.AT",
+      "BUY 91 AVAX.AT",
+      "BUY 11 BELA.AT",
+      "BUY 29 BOCHGR.AT",
+      "BUY 286 BYLOT.AT",
+      "BUY 13 CENER.AT",
+      "BUY 316 CREDIA.AT",
+      "BUY 84 ELHA.AT",
+      "BUY 17 ELPE.AT",
+      "BUY 17 ETE.AT",
+      "BUY 66 EUROB.AT",
+      "BUY 25 EYDAP.AT",
+      "BUY 6 GEKTERNA.AT",
+      "BUY 15 HTO.AT",
+      "BUY 103 INTRK.AT",
+      "BUY 9 KRI.AT",
+      "BUY 46 LAMDA.AT",
+      "BUY 4 MOH.AT",
+      "BUY 6 MTLN.AT",
+      "BUY 24 OPTIMA.AT",
+      "BUY 12 PPC.AT",
+      "BUY 30 PROF.AT",
+      "BUY 24 SAR.AT",
+      "BUY 5 TITC.AT",
+      "BUY 29 TPEIR.AT",
+      "BUY 18 VIO.AT"
+     ],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": [
+      "ADMIE.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 22.50 < min order 150",
+      "AEGN.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 23.20 < min order 150",
+      "AEM.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 25.36 < min order 150",
+      "AETF.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 0.00 < min order 150",
+      "AIA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 21.60 < min order 150",
+      "ALPHA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 23.93 < min order 150",
+      "ALWN.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 13.22 < min order 150",
+      "AVAX.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 23.52 < min order 150",
+      "BELA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 26.04 < min order 150",
+      "BOCHGR.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 21.00 < min order 150",
+      "BYLOT.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 25.68 < min order 150",
+      "CENER.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 23.16 < min order 150",
+      "CREDIA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 26.16 < min order 150",
+      "ELHA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 25.48 < min order 150",
+      "ELPE.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 17.80 < min order 150",
+      "ETE.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 17.34 < min order 150",
+      "EUROB.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 23.25 < min order 150",
+      "EYDAP.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 24.04 < min order 150",
+      "GEKTERNA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 0.00 < min order 150",
+      "HTO.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 19.74 < min order 150",
+      "INTRK.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 23.52 < min order 150",
+      "KRI.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 0.00 < min order 150",
+      "LAMDA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 20.01 < min order 150",
+      "MOH.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 0.00 < min order 150",
+      "MTLN.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 0.00 < min order 150",
+      "OPTIMA.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 25.52 < min order 150",
+      "PPC.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 24.86 < min order 150",
+      "PROF.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 19.76 < min order 150",
+      "SAR.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 24.80 < min order 150",
+      "TITC.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 0.00 < min order 150",
+      "TPEIR.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 21.01 < min order 150",
+      "VIO.AT ORDER_SKIPPED_MIN_SIZE: target 31.25, cash 1000.00, sized 16.76 < min order 150"
+     ]
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-10.prompt.json"
+  },
+  {
+   "date": "2026-09-11",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-11.prompt.json"
+  },
+  {
+   "date": "2026-09-14",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-14.prompt.json"
+  },
+  {
+   "date": "2026-09-15",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-15.prompt.json"
+  },
+  {
+   "date": "2026-09-16",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-16.prompt.json"
+  },
+  {
+   "date": "2026-09-17",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-17.prompt.json"
+  },
+  {
+   "date": "2026-09-18",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/equal_weight/decisions/2026-09-18.prompt.json"
+  }
+ ],
+ "items": {}
+}

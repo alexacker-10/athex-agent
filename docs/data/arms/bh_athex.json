@@ -1,0 +1,195 @@
+{
+ "key": "bh_athex",
+ "books": {
+  "10k": {
+   "trades": [
+    {
+     "order_id": "bh_athex:10k:2026-09-10:01:BUY:AETF.AT",
+     "ticker": "AETF.AT",
+     "side": "BUY",
+     "shares": 39,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 70.040001,
+     "fill_price": 70.7473,
+     "gross_value": 2759.14,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 27.58,
+     "cash_delta": -2764.04,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  },
+  "1k": {
+   "trades": [
+    {
+     "order_id": "bh_athex:1k:2026-09-10:01:BUY:AETF.AT",
+     "ticker": "AETF.AT",
+     "side": "BUY",
+     "shares": 14,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 70.040001,
+     "fill_price": 70.7445,
+     "gross_value": 990.42,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 9.86,
+     "cash_delta": -995.32,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  }
+ },
+ "decisions": [
+  {
+   "date": "2026-09-10",
+   "regime_note": "",
+   "actions": [
+    {
+     "kind": "buy",
+     "reason": "buy-and-hold benchmark",
+     "ticker": "AETF.AT",
+     "weight": 1.0
+    }
+   ],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [
+      "BUY 39 AETF.AT"
+     ],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [
+      "BUY 14 AETF.AT"
+     ],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-10.prompt.json"
+  },
+  {
+   "date": "2026-09-11",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-11.prompt.json"
+  },
+  {
+   "date": "2026-09-14",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-14.prompt.json"
+  },
+  {
+   "date": "2026-09-15",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-15.prompt.json"
+  },
+  {
+   "date": "2026-09-16",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-16.prompt.json"
+  },
+  {
+   "date": "2026-09-17",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-17.prompt.json"
+  },
+  {
+   "date": "2026-09-18",
+   "regime_note": "",
+   "actions": [],
+   "views": [],
+   "meta": {},
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/bh_athex/decisions/2026-09-18.prompt.json"
+  }
+ ],
+ "items": {}
+}

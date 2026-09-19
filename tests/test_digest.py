@@ -166,3 +166,31 @@ def test_dry_run_digest_is_mechanical(tmp_path):
     )
     assert d.model == "dry-run" and len(d.items) == 3 and d.cost["eur"] == 0
     assert d.items[1].summary_en.startswith("Εθνική Τράπεζα")
+
+
+def test_items_published_after_the_digest_day_are_excluded(tmp_path):
+    """Structural no-lookahead for news: a replay of a past day never sees later items."""
+    cfg = load_sources(REPO / "configs" / "sources.yaml")
+    store = NewsStore(tmp_path / "news")
+    matcher = TickerMatcher.from_yaml(REPO / "configs" / "companies.yaml")
+    future = item(
+        9,
+        "naftemporiki",
+        "news",
+        4,
+        "Εθνική Τράπεζα: μελλοντική είδηση",
+        published=datetime(2026, 9, 25, 9, 0, tzinfo=UTC),
+    )
+    rep = IngestReport(fetched_at=NOW, statuses=[], items=[future])
+    d = build_digest(
+        DAY,
+        cfg,
+        store,
+        matcher,
+        FakeLLM(),
+        universe=["ETE.AT"],
+        out_dir=tmp_path / "d",
+        cfg=DigestBuildConfig(fetch_bodies=False),
+        report=rep,
+    )
+    assert d.items == [] and d.model == "no-items" and store.load(DAY) == []

@@ -201,6 +201,7 @@ def run_historical(
                 bench_data, params("degiro_etf_core", bh_lim), BuyHoldPolicy(SP500_TICKER)
             )
             sp_ret = _ret(sp, b.capital_eur)
+            aetf_available = len(dates) > 1 and not math.isnan(bench_data.opens[1, 1])
             aetf = simulate(bench_data, params(b.fee_profile, bh_lim), BuyHoldPolicy(AETF_TICKER))
             rnd = [
                 simulate(data, params(b.fee_profile, base_lim), RandomPolicy(cfg.p_swap), seed=k)
@@ -211,10 +212,11 @@ def run_historical(
             eq = simulate(data, params(b.fee_profile, div_lim), EqualWeightPolicy())
             entry = {
                 "sp500_return": sp_ret,
-                "bh_aetf": {
-                    "return": _ret(aetf, b.capital_eur),
-                    "fees": aetf.fees_paid + aetf.tax_paid,
-                },
+                "bh_aetf": (
+                    {"return": _ret(aetf, b.capital_eur), "fees": aetf.fees_paid + aetf.tax_paid}
+                    if aetf_available
+                    else None
+                ),
                 "random": {
                     **_stats(rnd_ret, sp_ret),
                     "mean_fees": float(np.mean([r.fees_paid + r.tax_paid for r in rnd])),
@@ -236,7 +238,8 @@ def run_historical(
             pooled[b.id]["random"].extend(r - sp_ret for r in rnd_ret)
             pooled[b.id]["momentum"].append(entry["momentum"]["return"] - sp_ret)
             pooled[b.id]["equal_weight"].append(entry["equal_weight"]["return"] - sp_ret)
-            pooled[b.id]["bh_aetf"].append(entry["bh_aetf"]["return"] - sp_ret)
+            if entry["bh_aetf"] is not None:
+                pooled[b.id]["bh_aetf"].append(entry["bh_aetf"]["return"] - sp_ret)
         windows.append(win)
         if w_i % 10 == 0:
             log.info("window %d/%d done (%s)", w_i + 1, len(starts), dates[0])
@@ -264,6 +267,9 @@ def run_historical(
             "ALPHA.AT history on Yahoo starts 2025-07; it is absent from earlier windows.",
             "GD.AT is a price index (no dividends); AETF.AT is the investable comparison.",
             "Rule-based strategies only; LLM arms are never backtested on history.",
+            "bh_aetf covers windows from 2016-07 (AETF.AT inception) only; earlier ones excluded.",
+            "equal_weight at EUR 1,000 is mostly cash: a 1/N slice is below the EUR 150 minimum.",
+            "Universe per window = names with data at the time; early years have few names.",
         ],
         "n_windows": len(windows),
         "windows": windows,

@@ -1,0 +1,889 @@
+{
+ "key": "B",
+ "books": {
+  "10k": {
+   "trades": [
+    {
+     "order_id": "B:10k:2026-09-10:01:BUY:ADMIE.AT",
+     "ticker": "ADMIE.AT",
+     "side": "BUY",
+     "shares": 553,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 4.47,
+     "fill_price": 4.4813,
+     "gross_value": 2478.16,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 6.25,
+     "cash_delta": -2483.06,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "B:10k:2026-09-10:02:BUY:AEGN.AT",
+     "ticker": "AEGN.AT",
+     "side": "BUY",
+     "shares": 213,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 11.6,
+     "fill_price": 11.6702,
+     "gross_value": 2485.75,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 14.95,
+     "cash_delta": -2490.65,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "B:10k:2026-09-10:03:BUY:AEM.AT",
+     "ticker": "AEM.AT",
+     "side": "BUY",
+     "shares": 391,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.34,
+     "fill_price": 6.3784,
+     "gross_value": 2493.95,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 15.01,
+     "cash_delta": -2498.85,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "B:10k:2026-09-10:04:BUY:AETF.AT",
+     "ticker": "AETF.AT",
+     "side": "BUY",
+     "shares": 35,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 70.040001,
+     "fill_price": 70.7469,
+     "gross_value": 2476.14,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 24.74,
+     "cash_delta": -2481.04,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  },
+  "1k": {
+   "trades": [
+    {
+     "order_id": "B:1k:2026-09-10:01:BUY:ADMIE.AT",
+     "ticker": "ADMIE.AT",
+     "side": "BUY",
+     "shares": 54,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 4.47,
+     "fill_price": 4.4812,
+     "gross_value": 241.98,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 0.6,
+     "cash_delta": -246.88,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "B:1k:2026-09-10:02:BUY:AEGN.AT",
+     "ticker": "AEGN.AT",
+     "side": "BUY",
+     "shares": 21,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 11.6,
+     "fill_price": 11.6698,
+     "gross_value": 245.07,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.47,
+     "cash_delta": -249.97,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "B:1k:2026-09-10:03:BUY:AEM.AT",
+     "ticker": "AEM.AT",
+     "side": "BUY",
+     "shares": 38,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 6.34,
+     "fill_price": 6.3782,
+     "gross_value": 242.37,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 1.45,
+     "cash_delta": -247.27,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    },
+    {
+     "order_id": "B:1k:2026-09-10:04:BUY:AETF.AT",
+     "ticker": "AETF.AT",
+     "side": "BUY",
+     "shares": 3,
+     "decision_date": "2026-09-10",
+     "fill_date": "2026-09-11",
+     "open_price": 70.040001,
+     "fill_price": 70.7423,
+     "gross_value": 212.23,
+     "commission": 3.9,
+     "handling": 1.0,
+     "exchange": 0.0,
+     "sales_tax": 0.0,
+     "slippage_cost": 2.11,
+     "cash_delta": -217.13,
+     "cost_basis_sold": null,
+     "realized_pnl": null
+    }
+   ],
+   "divergences": [],
+   "cancelled": []
+  }
+ },
+ "decisions": [
+  {
+   "date": "2026-09-10",
+   "regime_note": "dry run",
+   "actions": [
+    {
+     "kind": "buy",
+     "reason": "dry-run build-up",
+     "ticker": "ADMIE.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "dry-run build-up",
+     "ticker": "AEGN.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "dry-run build-up",
+     "ticker": "AEM.AT",
+     "weight": null
+    },
+    {
+     "kind": "buy",
+     "reason": "dry-run build-up",
+     "ticker": "AETF.AT",
+     "weight": null
+    }
+   ],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-10:230643",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "eb43a70a1a0f1856",
+     "148e1a88b2fdf816",
+     "766fd22c3b17b6f7",
+     "588b9060c44ef5b3",
+     "6b44ae6ddc0e4ab9",
+     "772ae1decd36de91",
+     "7197472b1bebaac4",
+     "ca8cbb95dce41ea4",
+     "556439516f9e6794",
+     "51d3d6f30569eddc",
+     "b4436c6922a02cd9",
+     "7733eadca00a11c9",
+     "c3331607cf0f2bc0",
+     "1cdd7a3fb50ce1c6"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [
+      "BUY 553 ADMIE.AT",
+      "BUY 213 AEGN.AT",
+      "BUY 391 AEM.AT",
+      "BUY 35 AETF.AT"
+     ],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [
+      "BUY 54 ADMIE.AT",
+      "BUY 21 AEGN.AT",
+      "BUY 38 AEM.AT",
+      "BUY 3 AETF.AT"
+     ],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-10.prompt.json"
+  },
+  {
+   "date": "2026-09-11",
+   "regime_note": "dry run",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-11:230908",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "320dbc76f248d4f2",
+     "89856fddf1734c00"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-11.prompt.json"
+  },
+  {
+   "date": "2026-09-14",
+   "regime_note": "dry run",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-14:231120",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "85f2aef43dea8fea",
+     "52ddd4f838b89b62",
+     "419f8df75f1f247b",
+     "de723896a44dc110",
+     "b422758594ed06ec",
+     "61f463dc42406f11",
+     "e72772361eed43cf",
+     "98751fb9f104eb7a",
+     "ee3176249e66ef97",
+     "5420f1f9b3b30821",
+     "4c2d0a96d098ded2",
+     "b8d2a43ee3148e55",
+     "56603e14b9383f06",
+     "cd3087b6e4a0b003"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-14.prompt.json"
+  },
+  {
+   "date": "2026-09-15",
+   "regime_note": "dry run",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-15:231322",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "08602070a7ca6ee5",
+     "1ba18cb8724f41ea",
+     "1d8f07995a50705a",
+     "cb183f8201b5498b",
+     "943625b3360610ef",
+     "3bad2a6430e690fa",
+     "dee36da4959864d5",
+     "d5f51ee9ef9f5bae",
+     "65613825696c5bde",
+     "780cb2883dbaa22d",
+     "075f95a22925eb45",
+     "ecfd3510195ed927",
+     "1f0ae85f21f448af",
+     "c97b999264f026a6"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-15.prompt.json"
+  },
+  {
+   "date": "2026-09-16",
+   "regime_note": "dry run",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-16:231522",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "99f6dae24ac01768",
+     "283e9fdf7d88cd0f",
+     "8e548938895bed8b",
+     "2d7bbc8eb22a6a70",
+     "9c893163217b50e4",
+     "a697d1b72397a82e",
+     "88743c276a81b941",
+     "98921e2d4fc1ad00",
+     "34f36eba51293dcf",
+     "9679b7f5a2fb06c1",
+     "9805a3c889d1dbd3",
+     "655af67d3563d10d",
+     "cfc9d950fbc9895b",
+     "8670085d7104926c"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-16.prompt.json"
+  },
+  {
+   "date": "2026-09-17",
+   "regime_note": "dry run",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-17:231756",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "35d55f43548a058f",
+     "bf75058e64d4514e",
+     "4d110080be00dc09",
+     "e35cc45bf50a6240",
+     "a2d11c210a1da750",
+     "181526ee6b2a3e92",
+     "5c00caf0f85dc496",
+     "af934f320f04fd4e",
+     "d7fcacfbeb70f505",
+     "276a88cecb33d9d2",
+     "3b1c411de97c33b1",
+     "609e06e6294f9fa3",
+     "26328bbdec7caad7",
+     "23ac0b296d7f13ec"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-17.prompt.json"
+  },
+  {
+   "date": "2026-09-18",
+   "regime_note": "dry run",
+   "actions": [],
+   "views": [
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "ADMIE.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEGN.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AEM.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AETF.AT",
+     "view": "buy"
+    },
+    {
+     "catalysts": [],
+     "cited_item_ids": [],
+     "conviction": 0.5,
+     "horizon_days": 20,
+     "risks": [],
+     "thesis": "dry-run placeholder",
+     "ticker": "AIA.AT",
+     "view": "buy"
+    }
+   ],
+   "meta": {
+    "cost": {
+     "eur": 0.0,
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "usd": 0.0
+    },
+    "digest_id": "digest:2026-09-18:232043",
+    "dropped": [],
+    "dry_run": true,
+    "errors": [],
+    "item_ids": [
+     "e210e0c450178ac1",
+     "dea7aaf01c055518",
+     "7bf13fdfa8c2aa03",
+     "d51630302194e82a",
+     "63c8b7de09a18bee",
+     "1f659da848396533",
+     "d158aaecf0bccee2",
+     "079565cea0a9a187",
+     "485dfa1c00499de6",
+     "398f6ba56ddde01f",
+     "d331bf3f855980cb",
+     "b9286e10ecf34d97",
+     "3b499bdf34855473",
+     "a843c44e9a25e912"
+    ],
+    "model": "claude-sonnet-5",
+    "prompt_version": "base-v1"
+   },
+   "books": {
+    "10k": {
+     "orders": [],
+     "blocked": []
+    },
+    "1k": {
+     "orders": [],
+     "blocked": []
+    }
+   },
+   "prompt_file": "state/arms/B/decisions/2026-09-18.prompt.json"
+  }
+ ],
+ "items": {},
+ "journal": {
+  "arm_id": "B",
+  "theses": {},
+  "lessons": [],
+  "closed_trades": [],
+  "notes": "",
+  "updated": "2026-09-18"
+ }
+}
