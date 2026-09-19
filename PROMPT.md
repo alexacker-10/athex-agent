@@ -153,3 +153,21 @@ Start by giving me the architecture overview, the proposed arm list, the
 risk limits, and the cost estimate. Then STOP and wait for my approval
 before writing any code. After approval, build in stages, running tests
 as you go, and commit to git at each working milestone.
+
+## Project practices
+- After I approve the design, create a CLAUDE.md capturing: architecture
+  summary, repo layout, how to run tests and a local dry run, coding
+  conventions, and the invariants that must never be broken (no lookahead,
+  arm isolation, frozen live configs, secrets never in the repo).
+  Keep it updated as the project evolves.
+- .gitignore from the first commit, covering .env, caches, and local
+  artifacts. Provide a .env.example. API keys only via environment
+  variables / GitHub Secrets.
+- Pin dependency versions.
+- Separate CI workflow that runs tests on every push.
+- The daily trading workflow must be idempotent per trading date and must
+  not run concurrently with itself.
+- Create PREREGISTRATION.md (go-live criteria, committed before the first
+  live run) and DECISIONS.md (dated log of any change to the experiment).
+  Live arm configs are frozen once started; changes create new arms.
+- Log the full model input digest and output for every decision.
