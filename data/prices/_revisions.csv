@@ -1,0 +1,2 @@
+ticker,date,applied,old_open,new_open,old_close,new_close,old_volume,new_volume,fetched_at
+EURUSD=X,2026-09-18,True,1.147974,1.1474864482879639,1.149029,1.1476049423217773,0,0,2026-09-21T22:08:14.476648+00:00

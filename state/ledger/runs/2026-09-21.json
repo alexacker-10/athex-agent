@@ -1,6 +1,13 @@
 {
   "date": "2026-09-21",
   "jobs": {
+    "decide": {
+      "dry_run": false,
+      "finished": "2026-09-21T22:10:05.626449+00:00",
+      "note": "TypeError: \"Could not resolve authentication method. Expected one of api_key, auth_token, or credentials to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted\"",
+      "started": "2026-09-21T22:07:29.822695+00:00",
+      "status": "failed"
+    },
     "fill": {
       "dry_run": false,
       "finished": "2026-09-21T15:28:58.683875+00:00",
